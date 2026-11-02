@@ -1,0 +1,2 @@
+# Netlify: pre-rendered pages are served directly; unknown URLs get the SPA (renders a 404 page)
+/*    /404.html   404

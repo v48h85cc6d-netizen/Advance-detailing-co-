@@ -1,0 +1,583 @@
+{
+  "meta": {
+    "siteName": "ADVANCE DETAILING CO.",
+    "locale": "en_US",
+    "titleSuffix": "ADVANCE DETAILING CO. | Prishtina",
+    "pages": {
+      "home": {
+        "title": "ADVANCE DETAILING CO. — Premium Car Detailing in Prishtina",
+        "description": "Premium car detailing studio in Prishtina, Kosovo: paint correction, ceramic coating, PPF, ECU remapping and professional cleaning since 2019."
+      },
+      "services": {
+        "title": "Services",
+        "description": "16 premium services: ceramic coating, paint protection film, paint correction, ECU remap, body kits, engine bay cleaning and more."
+      },
+      "about": {
+        "title": "About Us",
+        "description": "Since 2019, ADVANCE DETAILING CO. has delivered premium vehicle care in Prishtina. Discover our story, our team, our vision and our mission."
+      },
+      "gallery": {
+        "title": "Gallery",
+        "description": "Our project gallery: Lamborghini Aventador SV Roadster, the one-of-one BMW M135i and many more vehicles treated in our studio."
+      },
+      "contact": {
+        "title": "Contact",
+        "description": "Visit us at Xhevat Qena, Prishtina 10000, Kosovo. Phone +383 49 909 229, email info@advancedetailingco.com. Book your appointment today."
+      },
+      "privacy": {
+        "title": "Privacy Policy",
+        "description": "How ADVANCE DETAILING CO. collects, uses and protects your personal data."
+      },
+      "cookies": {
+        "title": "Cookie Policy",
+        "description": "Information about cookies and similar technologies used on the ADVANCE DETAILING CO. website."
+      },
+      "terms": {
+        "title": "Terms & Conditions",
+        "description": "Terms and conditions for using the ADVANCE DETAILING CO. website."
+      },
+      "notFound": {
+        "title": "Page not found",
+        "description": "The page you are looking for does not exist."
+      }
+    }
+  },
+  "a11y": {
+    "skipToContent": "Skip to content",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "mainNav": "Main navigation",
+    "home": "ADVANCE DETAILING CO. — Home",
+    "logoAlt": "ADVANCE DETAILING CO. logo"
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "about": "About Us",
+    "gallery": "Gallery",
+    "contact": "Contact",
+    "book": "Book"
+  },
+  "language": {
+    "label": "Language",
+    "sq": "Shqip",
+    "en": "English",
+    "de": "Deutsch"
+  },
+  "theme": {
+    "toLight": "Switch to light mode",
+    "toDark": "Switch to dark mode",
+    "light": "Light",
+    "dark": "Dark"
+  },
+  "intro": {
+    "skip": "Skip Intro",
+    "enter": "Enter website",
+    "label": "Intro presentation"
+  },
+  "pillars": [
+    "Precision",
+    "Perfection",
+    "Protection",
+    "Exclusivity"
+  ],
+  "hero": {
+    "eyebrow": "Premium Detailing Studio · Prishtina",
+    "title": "The art of caring for your vehicle.",
+    "subtitle": "Paint correction, ceramic coating, protective films and performance — delivered with precision by a CARPRO and Gtechniq certified team.",
+    "ctaPrimary": "Book an Appointment",
+    "ctaSecondary": "Explore Services",
+    "scroll": "Scroll down",
+    "since": "Since 2019"
+  },
+  "common": {
+    "viewMore": "View more",
+    "viewAll": "View all",
+    "allServices": "All services",
+    "bookNow": "Book now",
+    "contactUs": "Contact us",
+    "photoComingSoon": "Photo coming soon",
+    "photo": "Photo",
+    "service": "Service",
+    "vehicle": "Vehicle",
+    "color": "Colour",
+    "back": "Back",
+    "backToGallery": "Back to gallery",
+    "nextProject": "Next project",
+    "previous": "Previous",
+    "next": "Next",
+    "close": "Close",
+    "fullscreen": "Full screen",
+    "exitFullscreen": "Exit full screen",
+    "openImage": "Open photo {{n}}",
+    "of": "of",
+    "readMore": "Read more",
+    "learnMore": "Learn more",
+    "opensNewTab": "opens in a new tab",
+    "lastUpdated": "Last updated"
+  },
+  "home": {
+    "featured": {
+      "eyebrow": "Featured projects",
+      "title": "Vehicles that speak for themselves.",
+      "text": "Every project is treated as unique — with time, patience and the finest products in the industry."
+    },
+    "services": {
+      "eyebrow": "Services",
+      "title": "16 services. One standard.",
+      "text": "From a full general clean to ECU remapping — every detail receives the same dedication."
+    },
+    "studio": {
+      "eyebrow": "Studio",
+      "title": "Where precision meets passion.",
+      "text": "Our studio in Prishtina is equipped for meticulous treatments, with professional lighting and dedicated space for every vehicle.",
+      "stat1": "Year founded",
+      "stat2": "Premium services",
+      "stat3": "Certifications",
+      "stat4": "Satisfied clients",
+      "stat4Value": "Hundreds"
+    },
+    "spotlight": {
+      "eyebrow": "Featured project",
+      "cta": "View project"
+    },
+    "about": {
+      "eyebrow": "About us",
+      "title": "Since 2019, with one goal: perfection.",
+      "cta": "Our story"
+    },
+    "cta": {
+      "title": "Ready to transform your vehicle?",
+      "text": "Contact us for a consultation and a personalised quote."
+    }
+  },
+  "projects": {
+    "eyebrow": "Project",
+    "galleryTitle": "Project gallery",
+    "detailsTitle": "Project details",
+    "ctaTitle": "Want the same result?",
+    "ctaText": "Tell us about your vehicle and we will recommend the right treatment.",
+    "audi-rs3": {
+      "title": "Audi RS3 Sportback",
+      "vehicle": "Audi RS3 Sportback",
+      "color": "Goodwood Green",
+      "service": "Paint Correction & Ceramic Coating",
+      "description": "Full paint correction and professional ceramic coating to bring out the depth and gloss of Goodwood Green."
+    },
+    "ferrari-488-pista": {
+      "title": "Treated with the Gold Package",
+      "vehicle": "Ferrari 488 Pista",
+      "color": "Rosso Scuderia",
+      "service": "Gold Package",
+      "description": "A Ferrari 488 Pista in Rosso Scuderia, treated with our Gold Package — complete care for an exceptional car."
+    },
+    "bmw-740d": {
+      "title": "BMW G70 740d xDrive",
+      "vehicle": "BMW G70 740d xDrive 2023",
+      "color": "",
+      "service": "Paint Correction & Ceramic Coating",
+      "description": "Paint correction and ceramic coating for a 2023 BMW G70 740d xDrive — long-lasting protection and deep gloss."
+    },
+    "lamborghini-aventador": {
+      "title": "Lamborghini Aventador SV Roadster",
+      "vehicle": "Lamborghini Aventador SV Roadster — 1 of 500",
+      "color": "",
+      "service": "Full Package",
+      "description": "One of only 500 units ever built. A Lamborghini Aventador SV Roadster, treated with our full package."
+    },
+    "bmw-m135i": {
+      "title": "BMW M135i Engine — 1 of 1",
+      "vehicle": "BMW M135i — 1 of 1, +1000 HP",
+      "color": "",
+      "service": "General Cleaning",
+      "description": "The engine of a unique BMW M135i producing more than 1000 horsepower — cleaned and treated with the care it deserves."
+    }
+  },
+  "services": {
+    "eyebrow": "Our services",
+    "title": "Premium services for every detail.",
+    "intro": "We combine professional techniques with the finest products on the market to protect, restore and perfect your vehicle.",
+    "categories": {
+      "cleaning": "Cleaning",
+      "correction": "Correction & Restoration",
+      "protection": "Protection",
+      "performance": "Performance",
+      "styling": "Styling"
+    },
+    "items": {
+      "general-cleaning": {
+        "name": "General Cleaning",
+        "description": "A complete exterior and interior clean using products that are safe for every surface."
+      },
+      "ppf": {
+        "name": "Paint Protection Film (PPF)",
+        "description": "Transparent film that protects your paint from stone chips, scratches and environmental damage."
+      },
+      "ecu-remap": {
+        "name": "ECU Remap",
+        "description": "Professional reprogramming of the engine control unit for improved performance and response."
+      },
+      "body-kits": {
+        "name": "Body Kits",
+        "description": "Fitting of body kits and aerodynamic components for a unique, sporty look."
+      },
+      "ceramic-coating": {
+        "name": "Professional Ceramic Coating",
+        "description": "A long-lasting ceramic layer for deep gloss and hydrophobic protection."
+      },
+      "paint-polishing": {
+        "name": "Paint Correction",
+        "description": "Multi-stage paint correction to remove scratches, holograms and swirl marks."
+      },
+      "plastic-restoration": {
+        "name": "Trim Restoration",
+        "description": "Restores colour to sun-faded exterior plastics and protects them."
+      },
+      "wheel-cleaning": {
+        "name": "Wheel Cleaning",
+        "description": "Deep cleaning of rims and removal of brake dust without harming the finish."
+      },
+      "glass-polishing": {
+        "name": "Glass Polishing",
+        "description": "Removes light scratches and water spots for clear, safe visibility."
+      },
+      "wheel-protection": {
+        "name": "Wheel Protection",
+        "description": "A protective coating that keeps rims cleaner and makes washing easier."
+      },
+      "plastic-cleaning": {
+        "name": "Plastic Cleaning",
+        "description": "Cleaning and care of interior and exterior plastics with a natural matte finish."
+      },
+      "exhaust-polishing": {
+        "name": "Exhaust Tip Polishing",
+        "description": "Polishing of exhaust tips for a like-new metallic shine."
+      },
+      "glass-protection": {
+        "name": "Glass Protection",
+        "description": "Hydrophobic glass treatment for fast water run-off and better visibility."
+      },
+      "engine-cleaning": {
+        "name": "Engine Bay Cleaning",
+        "description": "Careful cleaning of the engine bay and protection of its components."
+      },
+      "interior-film": {
+        "name": "Interior Film",
+        "description": "Protective and decorative film for screens, panels and interior surfaces."
+      },
+      "disinfection": {
+        "name": "Vehicle Disinfection",
+        "description": "Complete interior disinfection for a clean, hygienic and odour-free cabin."
+      }
+    },
+    "ctaTitle": "Not sure which service is right for you?",
+    "ctaText": "Contact us and we will advise you on the ideal treatment for your vehicle."
+  },
+  "certifications": {
+    "eyebrow": "Verified quality",
+    "title": "Our Certifications",
+    "text": "We work with the most respected detailing product brands in the world.",
+    "items": {
+      "carpro": "CARPRO Certified Detailing Center",
+      "nasiol": "Nasiol",
+      "gtechniq": "Gtechniq Accredited"
+    },
+    "label": "Certification",
+    "prev": "Previous certification",
+    "next": "Next certification",
+    "goTo": "Go to certification {{n}}"
+  },
+  "about": {
+    "eyebrow": "About us",
+    "title": "Precision from day one.",
+    "intro": "ADVANCE DETAILING CO. was born from a passion for cars and the desire to set a new standard of vehicle care in Kosovo.",
+    "timelineTitle": "Our journey",
+    "founded": {
+      "year": "2019",
+      "title": "The Establishment of Our Company",
+      "text": "We are dedicated to meeting our customers' needs and expectations, always prioritizing quality and customer satisfaction. Today, our company has hundreds of satisfied customers."
+    },
+    "today": {
+      "year": "Today",
+      "title": "Hundreds of satisfied customers",
+      "text": "16 premium services and certifications from CARPRO and Gtechniq."
+    },
+    "team": {
+      "title": "Our Team",
+      "text": "Our team is highly committed to professionalism, reliability and customer satisfaction. We are here to provide high-quality services on time. Through our team's dedication and expertise, we aim to find the best solution for every vehicle maintenance and care requirement."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "text": "Our vision is to remain leaders in the automotive detailing industry, which represents one of our core values."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "text": "Our mission is to consistently provide the highest-quality products and services in Kosovo and beyond."
+    },
+    "photoAlt": "The ADVANCE DETAILING CO. team and studio",
+    "values": [
+      "Quality",
+      "Reliability",
+      "Punctuality",
+      "Customer satisfaction"
+    ]
+  },
+  "gallery": {
+    "eyebrow": "Gallery",
+    "title": "Work that speaks for itself.",
+    "intro": "A selection of the vehicles we have had the privilege to treat.",
+    "featuredLabel": "Featured project",
+    "gridTitle": "From the studio",
+    "specialLabel": "Special project",
+    "photoAlt": "Photo {{n}} from the ADVANCE DETAILING CO. gallery"
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Let's talk about your vehicle.",
+    "invitation": "Would you like to visit us? Stop by for a coffee.",
+    "addressLabel": "Address",
+    "phoneLabel": "Phone",
+    "emailLabel": "Email",
+    "directions": "Get directions",
+    "mapTitle": "Map showing the location of ADVANCE DETAILING CO.",
+    "mapConsent": "The map is provided by Google Maps, which may set cookies. Load it only if you agree.",
+    "mapLoad": "Load map",
+    "form": {
+      "title": "Send us a message",
+      "name": "Full name",
+      "email": "Email address",
+      "message": "Your message here",
+      "consent": "I agree that my data will be processed to answer my request, as described in the <privacy>Privacy Policy</privacy>.",
+      "submit": "Send Message",
+      "sending": "Sending…",
+      "required": "Required",
+      "errors": {
+        "name": "Please enter your full name (at least 2 characters).",
+        "email": "Please enter a valid email address.",
+        "message": "Your message must be at least 10 characters long.",
+        "consent": "Please agree to the processing of your data."
+      },
+      "success": "Thank you! Your message has been sent successfully. We will get back to you soon.",
+      "error": "Your message could not be sent. Please try again or contact us by phone or email.",
+      "notConfigured": "The contact form is not yet connected to an email service. Please email or call us directly.",
+      "openEmail": "Open email"
+    }
+  },
+  "social": {
+    "eyebrow": "Social media",
+    "title": "Follow Us On",
+    "text": "See our latest projects and behind-the-scenes moments from the studio.",
+    "follow": "Follow us on {{network}}"
+  },
+  "footer": {
+    "tagline": "Premium automotive detailing studio in Prishtina, Kosovo.",
+    "navigation": "Navigation",
+    "contact": "Contact",
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "cookies": "Cookie Policy",
+    "terms": "Terms & Conditions",
+    "cookieSettings": "Cookie Settings",
+    "rights": "All rights reserved.",
+    "backToTop": "Back to top"
+  },
+  "toast": {
+    "close": "Close notification"
+  },
+  "consent": {
+    "title": "We respect your privacy",
+    "text": "We use technologies that are essential for the website to work. With your consent, we may also load external content (Google Maps) and analytics. You can change your choice at any time.",
+    "acceptAll": "Accept All",
+    "rejectAll": "Reject Non-Essential",
+    "settings": "Cookie Settings",
+    "save": "Save choice",
+    "policyLink": "Cookie Policy",
+    "settingsTitle": "Cookie Settings",
+    "settingsText": "Choose which categories you allow. Necessary cookies are always active because the website cannot function without them.",
+    "alwaysOn": "Always active",
+    "categories": {
+      "necessary": {
+        "title": "Necessary",
+        "text": "Store your consent choice, language and theme (dark/light). Not used for tracking."
+      },
+      "analytics": {
+        "title": "Analytics",
+        "text": "Help us understand how the website is used (Google Analytics), only if enabled by the site owner."
+      },
+      "media": {
+        "title": "External media",
+        "text": "Allow the Google Maps map to load, which may set cookies from Google."
+      }
+    }
+  },
+  "legal": {
+    "updated": "2 November 2026",
+    "privacy": {
+      "title": "Privacy Policy",
+      "intro": "This policy explains how ADVANCE DETAILING CO. processes personal data when you visit this website or contact us.",
+      "sections": [
+        {
+          "h": "1. Data controller",
+          "p": [
+            "The data controller is ADVANCE DETAILING CO., Xhevat Qena, Prishtina 10000, Kosovo. Email: info@advancedetailingco.com, Phone: +383 (0) 49 909 229."
+          ]
+        },
+        {
+          "h": "2. Legal framework",
+          "p": [
+            "Data is processed in accordance with Law No. 06/L-082 on the Protection of Personal Data of the Republic of Kosovo and, where applicable, the EU General Data Protection Regulation (GDPR).",
+            "The legal bases we rely on are: your consent (e.g. contact form, external media, analytics), pre-contractual steps taken at your request, and our legitimate interest in operating the website securely."
+          ]
+        },
+        {
+          "h": "3. Data we collect",
+          "p": [
+            "Contact form: your full name, email address and the content of your message.",
+            "Technical data: the hosting provider may log your IP address, browser type and time of visit in server logs for security purposes.",
+            "Preferences: your language, theme and consent choices are stored only in your browser (localStorage)."
+          ]
+        },
+        {
+          "h": "4. Purpose of processing",
+          "p": [
+            "We use data only to respond to your enquiries, arrange appointments and keep the website running. We do not sell your data and do not use it for advertising without your consent."
+          ]
+        },
+        {
+          "h": "5. Recipients and processors",
+          "p": [
+            "Form messages may be transmitted via an email service provider acting as a processor on our behalf. Google Maps and Google Analytics are loaded only after your consent. When you follow links to Instagram, TikTok or Facebook, the privacy policies of those platforms apply."
+          ]
+        },
+        {
+          "h": "6. International transfers",
+          "p": [
+            "Some providers (e.g. Google) may process data outside Kosovo or the EU. In such cases we rely on appropriate safeguards such as standard contractual clauses."
+          ]
+        },
+        {
+          "h": "7. Retention",
+          "p": [
+            "Contact messages are kept only as long as necessary to handle your request and meet legal obligations, and are then deleted. Browser preferences remain until you clear them."
+          ]
+        },
+        {
+          "h": "8. Your rights",
+          "p": [
+            "You have the right to request access, rectification, erasure, restriction of processing and data portability, and to object to processing. You may withdraw consent at any time without affecting the lawfulness of earlier processing. Write to us at info@advancedetailingco.com.",
+            "You also have the right to lodge a complaint with Kosovo's Information and Privacy Agency (IPA) or with the supervisory authority in your EU country of residence."
+          ]
+        },
+        {
+          "h": "9. Security",
+          "p": [
+            "The website is served over an encrypted connection (HTTPS) and we take reasonable technical and organisational measures to protect your data."
+          ]
+        },
+        {
+          "h": "10. Changes",
+          "p": [
+            "We may update this policy. The current version is always published on this page with its update date."
+          ]
+        }
+      ]
+    },
+    "cookies": {
+      "title": "Cookie Policy",
+      "intro": "This policy explains how cookies and similar technologies (such as localStorage) are used on this website.",
+      "sections": [
+        {
+          "h": "1. What are cookies?",
+          "p": [
+            "Cookies are small text files stored on your device. Similar technologies, such as localStorage, store information directly in your browser."
+          ]
+        },
+        {
+          "h": "2. Necessary (always active)",
+          "p": [
+            "adc-consent — stores your consent choice (localStorage, up to 12 months).",
+            "adc-theme — stores the dark or light theme (localStorage).",
+            "adc-intro — records that the intro was shown during this session (sessionStorage, deleted when the browser closes)."
+          ]
+        },
+        {
+          "h": "3. Analytics (only with consent)",
+          "p": [
+            "If the site owner enables Google Analytics and you give consent, Google may set cookies such as _ga and _ga_* (up to 2 years) for anonymous usage statistics. Without your consent, no analytics script is loaded."
+          ]
+        },
+        {
+          "h": "4. External media (only with consent)",
+          "p": [
+            "The Google Maps map on the contact page loads only after you allow it. Once loaded, Google may set cookies according to its own privacy policy."
+          ]
+        },
+        {
+          "h": "5. Managing your choice",
+          "p": [
+            "You can change your consent at any time using the \"Cookie Settings\" link at the bottom of the page. You can also delete cookies and stored data in your browser settings."
+          ]
+        }
+      ]
+    },
+    "terms": {
+      "title": "Terms & Conditions",
+      "intro": "By using this website, you accept the following terms.",
+      "sections": [
+        {
+          "h": "1. General information",
+          "p": [
+            "This website is operated by ADVANCE DETAILING CO., Xhevat Qena, Prishtina 10000, Kosovo."
+          ]
+        },
+        {
+          "h": "2. Services and bookings",
+          "p": [
+            "Information about services on this website is for information purposes only and does not constitute a binding offer. Prices, duration and availability are confirmed directly with us before any service begins."
+          ]
+        },
+        {
+          "h": "3. Intellectual property",
+          "p": [
+            "The logo, name, texts, photographs and videos on this website are the property of ADVANCE DETAILING CO. or are used with permission. Copying or using them without prior written permission is prohibited."
+          ]
+        },
+        {
+          "h": "4. External links",
+          "p": [
+            "The website contains links to external platforms (Instagram, TikTok, Facebook, Google Maps). We are not responsible for their content or privacy practices."
+          ]
+        },
+        {
+          "h": "5. Liability",
+          "p": [
+            "We strive to keep information accurate and up to date, but we do not guarantee that the website will always be error-free or uninterrupted. Our liability is limited to the extent permitted by law."
+          ]
+        },
+        {
+          "h": "6. Applicable law",
+          "p": [
+            "These terms are governed by the laws of the Republic of Kosovo."
+          ]
+        },
+        {
+          "h": "7. Changes",
+          "p": [
+            "We may change these terms at any time. The current version is published on this page."
+          ]
+        },
+        {
+          "h": "8. Contact",
+          "p": [
+            "Questions: info@advancedetailingco.com or +383 (0) 49 909 229."
+          ]
+        }
+      ]
+    }
+  },
+  "notFound": {
+    "title": "Page not found",
+    "text": "The page you are looking for does not exist or has been moved.",
+    "cta": "Back to home"
+  }
+}

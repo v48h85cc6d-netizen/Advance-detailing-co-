@@ -1,0 +1,15 @@
+{
+  "languages": ["sq", "en", "de"],
+  "defaultLanguage": "sq",
+  "pages": [
+    { "key": "home", "path": "/", "priority": 1.0 },
+    { "key": "services", "path": "/services", "priority": 0.9 },
+    { "key": "about", "path": "/about", "priority": 0.8 },
+    { "key": "gallery", "path": "/gallery", "priority": 0.8 },
+    { "key": "contact", "path": "/contact", "priority": 0.9 },
+    { "key": "privacy", "path": "/privacy", "priority": 0.3 },
+    { "key": "cookies", "path": "/cookies", "priority": 0.3 },
+    { "key": "terms", "path": "/terms", "priority": 0.3 }
+  ],
+  "projects": ["audi-rs3", "ferrari-488-pista", "bmw-740d", "lamborghini-aventador", "bmw-m135i"]
+}

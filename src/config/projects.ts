@@ -1,0 +1,29 @@
+import type { AssetFolder } from './images';
+import routes from './routes.json';
+
+/**
+ * PROJECT CONFIGURATION
+ * Text (titles, vehicle names, services, descriptions) lives in the translation
+ * files under `projects.<slug>`. Each project has its OWN image folder.
+ */
+export type ProjectSlug = (typeof routes.projects)[number];
+
+export interface Project {
+  slug: ProjectSlug;
+  folder: AssetFolder;
+  /** number of photo slots on the project page */
+  photoSlots: number;
+  featured?: boolean;
+  badge?: string;
+}
+
+export const projects: Project[] = [
+  { slug: 'audi-rs3', folder: 'audi-rs3', photoSlots: 8, featured: true },
+  { slug: 'ferrari-488-pista', folder: 'ferrari-488-pista', photoSlots: 8, featured: true },
+  { slug: 'bmw-740d', folder: 'bmw-740d', photoSlots: 8, featured: true },
+  { slug: 'lamborghini-aventador', folder: 'lamborghini-aventador', photoSlots: 12, badge: '1 / 500' },
+  { slug: 'bmw-m135i', folder: 'bmw-m135i', photoSlots: 8, badge: '1 / 1' },
+];
+
+export const featuredProjects = projects.filter((p) => p.featured);
+export const getProject = (slug: string) => projects.find((p) => p.slug === slug);

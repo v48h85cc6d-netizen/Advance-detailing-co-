@@ -1,0 +1,583 @@
+{
+  "meta": {
+    "siteName": "ADVANCE DETAILING CO.",
+    "locale": "sq_AL",
+    "titleSuffix": "ADVANCE DETAILING CO. | Prishtinë",
+    "pages": {
+      "home": {
+        "title": "ADVANCE DETAILING CO. — Detailing Premium në Prishtinë",
+        "description": "Studio premium e detailing-ut në Prishtinë: polirim, veshje keramike, folje PPF, ECU remap dhe pastrim profesional. Precizion. Përsosmëri. Mbrojtje."
+      },
+      "services": {
+        "title": "Shërbimet",
+        "description": "16 shërbime premium: veshje keramike, folje PPF, polirim i bojës, ECU remap, body kits, pastrim i motorit dhe më shumë. Certifikuar nga CARPRO."
+      },
+      "about": {
+        "title": "Rreth Nesh",
+        "description": "Që nga viti 2019, ADVANCE DETAILING CO. ofron kujdes premium për automjete në Prishtinë. Njihuni me historinë, ekipin, vizionin dhe misionin tonë."
+      },
+      "gallery": {
+        "title": "Galeria",
+        "description": "Galeria e projekteve tona: Lamborghini Aventador SV Roadster, BMW M135i 1 of 1 dhe shumë automjete të tjera të trajtuara në studion tonë."
+      },
+      "contact": {
+        "title": "Kontakt",
+        "description": "Na vizitoni në Xhevat Qena, Prishtinë 10000. Telefon +383 49 909 229, email info@advancedetailingco.com. Rezervoni takimin tuaj sot."
+      },
+      "privacy": {
+        "title": "Politika e Privatësisë",
+        "description": "Si i mbledh, përdor dhe mbron ADVANCE DETAILING CO. të dhënat tuaja personale."
+      },
+      "cookies": {
+        "title": "Politika e Cookies",
+        "description": "Informacion mbi cookies dhe teknologjitë e ngjashme që përdor faqja e ADVANCE DETAILING CO."
+      },
+      "terms": {
+        "title": "Kushtet e Përdorimit",
+        "description": "Kushtet e përdorimit të faqes së internetit të ADVANCE DETAILING CO."
+      },
+      "notFound": {
+        "title": "Faqja nuk u gjet",
+        "description": "Faqja që kërkuat nuk ekziston."
+      }
+    }
+  },
+  "a11y": {
+    "skipToContent": "Kalo te përmbajtja",
+    "openMenu": "Hap menunë",
+    "closeMenu": "Mbyll menunë",
+    "mainNav": "Navigimi kryesor",
+    "home": "ADVANCE DETAILING CO. — Ballina",
+    "logoAlt": "Logoja e ADVANCE DETAILING CO."
+  },
+  "nav": {
+    "home": "Ballina",
+    "services": "Shërbimet",
+    "about": "Rreth Nesh",
+    "gallery": "Galeria",
+    "contact": "Kontakt",
+    "book": "Rezervo"
+  },
+  "language": {
+    "label": "Gjuha",
+    "sq": "Shqip",
+    "en": "English",
+    "de": "Deutsch"
+  },
+  "theme": {
+    "toLight": "Kalo në modalitetin e ndritshëm",
+    "toDark": "Kalo në modalitetin e errët",
+    "light": "I ndritshëm",
+    "dark": "I errët"
+  },
+  "intro": {
+    "skip": "Kalo Intron",
+    "enter": "Hyr në faqe",
+    "label": "Prezantimi hyrës"
+  },
+  "pillars": [
+    "Precizion",
+    "Përsosmëri",
+    "Mbrojtje",
+    "Ekskluzivitet"
+  ],
+  "hero": {
+    "eyebrow": "Studio Premium e Detailing-ut · Prishtinë",
+    "title": "Arti i kujdesit për automjetin tuaj.",
+    "subtitle": "Polirim, veshje keramike, folje mbrojtëse dhe performancë — të realizuara me precizion nga një ekip i certifikuar CARPRO dhe Gtechniq.",
+    "ctaPrimary": "Rezervo Takimin",
+    "ctaSecondary": "Zbulo Shërbimet",
+    "scroll": "Lëviz poshtë",
+    "since": "Që nga 2019"
+  },
+  "common": {
+    "viewMore": "Shiko më shumë",
+    "viewAll": "Shiko të gjitha",
+    "allServices": "Të gjitha shërbimet",
+    "bookNow": "Rezervo tani",
+    "contactUs": "Na kontaktoni",
+    "photoComingSoon": "Fotografia së shpejti",
+    "photo": "Foto",
+    "service": "Shërbimi",
+    "vehicle": "Automjeti",
+    "color": "Ngjyra",
+    "back": "Kthehu",
+    "backToGallery": "Kthehu te galeria",
+    "nextProject": "Projekti tjetër",
+    "previous": "E mëparshmja",
+    "next": "Tjetra",
+    "close": "Mbyll",
+    "fullscreen": "Ekran i plotë",
+    "exitFullscreen": "Dil nga ekrani i plotë",
+    "openImage": "Hap fotografinë {{n}}",
+    "of": "nga",
+    "readMore": "Lexo më shumë",
+    "learnMore": "Mëso më shumë",
+    "opensNewTab": "hapet në skedë të re",
+    "lastUpdated": "Përditësuar së fundi"
+  },
+  "home": {
+    "featured": {
+      "eyebrow": "Projekte të zgjedhura",
+      "title": "Automjete që flasin vetë.",
+      "text": "Çdo projekt trajtohet si unik — me kohë, durim dhe produktet më të mira në industri."
+    },
+    "services": {
+      "eyebrow": "Shërbimet",
+      "title": "16 shërbime. Një standard.",
+      "text": "Nga pastrimi i përgjithshëm deri te ECU remap — çdo detaj trajtohet me të njëjtin përkushtim."
+    },
+    "studio": {
+      "eyebrow": "Studio",
+      "title": "Ku precizioni takon pasionin.",
+      "text": "Studioja jonë në Prishtinë është e pajisur për trajtime të kujdesshme, me ndriçim profesional dhe hapësirë të dedikuar për çdo automjet.",
+      "stat1": "Viti i themelimit",
+      "stat2": "Shërbime premium",
+      "stat3": "Certifikime",
+      "stat4": "Klientë të kënaqur",
+      "stat4Value": "Qindra"
+    },
+    "spotlight": {
+      "eyebrow": "Projekti kryesor",
+      "cta": "Shiko projektin"
+    },
+    "about": {
+      "eyebrow": "Rreth nesh",
+      "title": "Që nga 2019, me një qëllim: përsosmërinë.",
+      "cta": "Historia jonë"
+    },
+    "cta": {
+      "title": "Gati për transformimin e automjetit tuaj?",
+      "text": "Na kontaktoni për një konsultë dhe ofertë të personalizuar."
+    }
+  },
+  "projects": {
+    "eyebrow": "Projekt",
+    "galleryTitle": "Galeria e projektit",
+    "detailsTitle": "Detajet e projektit",
+    "ctaTitle": "Dëshironi të njëjtin rezultat?",
+    "ctaText": "Na tregoni për automjetin tuaj dhe ne do t'ju propozojmë trajtimin e duhur.",
+    "audi-rs3": {
+      "title": "Audi RS3 Sportback",
+      "vehicle": "Audi RS3 Sportback",
+      "color": "Goodwood Green",
+      "service": "Polirim & Ceramic Coating",
+      "description": "Polirim i plotë i bojës dhe veshje keramike profesionale për të nxjerrë në pah thellësinë dhe shkëlqimin e ngjyrës Goodwood Green."
+    },
+    "ferrari-488-pista": {
+      "title": "Trajtuar me Paketën Gold",
+      "vehicle": "Ferrari 488 Pista",
+      "color": "Rosso Scuderia",
+      "service": "Paketa Gold",
+      "description": "Ferrari 488 Pista në Rosso Scuderia, i trajtuar me Paketën tonë Gold — kujdes i plotë për një automjet të veçantë."
+    },
+    "bmw-740d": {
+      "title": "BMW G70 740d xDrive",
+      "vehicle": "BMW G70 740d xDrive 2023",
+      "color": "",
+      "service": "Polirim & Ceramic Coating",
+      "description": "Polirim i bojës dhe veshje keramike për BMW G70 740d xDrive 2023 — mbrojtje afatgjatë dhe shkëlqim i thellë."
+    },
+    "lamborghini-aventador": {
+      "title": "Lamborghini Aventador SV Roadster",
+      "vehicle": "Lamborghini Aventador SV Roadster — 1 of 500",
+      "color": "",
+      "service": "Full Package",
+      "description": "Një nga vetëm 500 njësitë e prodhuara. Lamborghini Aventador SV Roadster, i trajtuar me paketën tonë të plotë."
+    },
+    "bmw-m135i": {
+      "title": "BMW M135i Engine — 1 of 1",
+      "vehicle": "BMW M135i — 1 of 1, +1000 HP",
+      "color": "",
+      "service": "Pastrim i Përgjithshëm",
+      "description": "Motori i një BMW M135i unik me mbi 1000 kuaj-fuqi — i pastruar dhe i trajtuar me kujdesin që meriton."
+    }
+  },
+  "services": {
+    "eyebrow": "Shërbimet tona",
+    "title": "Shërbime premium për çdo detaj.",
+    "intro": "Kombinojmë teknikat profesionale me produktet më të mira në treg për të mbrojtur, rikthyer dhe përsosur automjetin tuaj.",
+    "categories": {
+      "cleaning": "Pastrim",
+      "correction": "Polirim & Rikthim",
+      "protection": "Mbrojtje",
+      "performance": "Performancë",
+      "styling": "Stilim"
+    },
+    "items": {
+      "general-cleaning": {
+        "name": "Pastrim i Përgjithshëm",
+        "description": "Pastrim i plotë i jashtëm dhe i brendshëm me produkte të sigurta për çdo sipërfaqe."
+      },
+      "ppf": {
+        "name": "Folje Mbrojtëse PPF",
+        "description": "Paint Protection Film transparent që mbron bojën nga gurët, gërvishtjet dhe ndikimet e mjedisit."
+      },
+      "ecu-remap": {
+        "name": "ECU Remap",
+        "description": "Riprogramim profesional i njësisë së kontrollit të motorit për performancë dhe reagim më të mirë."
+      },
+      "body-kits": {
+        "name": "Body Kits",
+        "description": "Montim i body kit-eve dhe elementeve aerodinamike për një pamje unike dhe sportive."
+      },
+      "ceramic-coating": {
+        "name": "Veshje Keramike Profesionale",
+        "description": "Shtresë keramike me jetëgjatësi të lartë për shkëlqim të thellë dhe mbrojtje hidrofobike."
+      },
+      "paint-polishing": {
+        "name": "Polirim i Bojës",
+        "description": "Korrigjim i bojës në disa faza për të larguar gërvishtjet, hologramet dhe njollat."
+      },
+      "plastic-restoration": {
+        "name": "Riveshje e Plastikave",
+        "description": "Rikthim i ngjyrës dhe mbrojtje e plastikave të jashtme të zbehura nga dielli."
+      },
+      "wheel-cleaning": {
+        "name": "Pastrim i Felgave",
+        "description": "Pastrim i thellë i felgave dhe largim i pluhurit të frenave pa dëmtuar sipërfaqen."
+      },
+      "glass-polishing": {
+        "name": "Polirim i Xhamave",
+        "description": "Largim i gërvishtjeve të lehta dhe njollave për dukshmëri të qartë dhe të sigurt."
+      },
+      "wheel-protection": {
+        "name": "Mbrojtje e Felgave",
+        "description": "Veshje mbrojtëse që e bën pastrimin më të lehtë dhe mbron felgat nga papastërtitë."
+      },
+      "plastic-cleaning": {
+        "name": "Pastrim i Plastikave",
+        "description": "Pastrim dhe kujdes i plastikave të brendshme e të jashtme me përfundim mat dhe natyral."
+      },
+      "exhaust-polishing": {
+        "name": "Polirim i Marmitave",
+        "description": "Polirim i majave të marmitave për një shkëlqim metalik si i ri."
+      },
+      "glass-protection": {
+        "name": "Mbrojtje e Xhamave",
+        "description": "Trajtim hidrofobik i xhamave për largim të shpejtë të ujit dhe dukshmëri më të mirë."
+      },
+      "engine-cleaning": {
+        "name": "Pastrim i Motorit",
+        "description": "Pastrim i kujdesshëm i hapësirës së motorit dhe mbrojtje e komponentëve."
+      },
+      "interior-film": {
+        "name": "Folje për Interierin",
+        "description": "Folje mbrojtëse dhe dekorative për ekranet, panelet dhe sipërfaqet e brendshme."
+      },
+      "disinfection": {
+        "name": "Dezinfektim i Veturës",
+        "description": "Dezinfektim i plotë i interierit për një ambient të pastër, higjienik dhe pa aroma."
+      }
+    },
+    "ctaTitle": "Nuk jeni të sigurt cili shërbim ju përshtatet?",
+    "ctaText": "Na kontaktoni dhe ne do t'ju këshillojmë për trajtimin ideal për automjetin tuaj."
+  },
+  "certifications": {
+    "eyebrow": "Cilësi e verifikuar",
+    "title": "Certifikimet Tona",
+    "text": "Punojmë me markat më të njohura të produkteve të detailing-ut në botë.",
+    "items": {
+      "carpro": "CARPRO Certified Detailing Center",
+      "nasiol": "Nasiol",
+      "gtechniq": "Gtechniq Accredited"
+    },
+    "label": "Certifikim",
+    "prev": "Certifikimi i mëparshëm",
+    "next": "Certifikimi tjetër",
+    "goTo": "Shko te certifikimi {{n}}"
+  },
+  "about": {
+    "eyebrow": "Rreth nesh",
+    "title": "Precizion që nga dita e parë.",
+    "intro": "ADVANCE DETAILING CO. lindi nga pasioni për automjetet dhe dëshira për të ofruar një standard të ri kujdesi në Kosovë.",
+    "timelineTitle": "Rrugëtimi ynë",
+    "founded": {
+      "year": "2019",
+      "title": "Themelimi i kompanisë sonë",
+      "text": "Jemi të përkushtuar për të përmbushur nevojat dhe pritshmëritë e klientëve tanë, duke i dhënë gjithmonë përparësi cilësisë dhe kënaqësisë së klientit. Sot, kompania jonë ka qindra klientë të kënaqur."
+    },
+    "today": {
+      "year": "Sot",
+      "title": "Qindra klientë të kënaqur",
+      "text": "16 shërbime premium dhe certifikime nga markat CARPRO dhe Gtechniq."
+    },
+    "team": {
+      "title": "Ekipi ynë",
+      "text": "Ekipi ynë është shumë i përkushtuar ndaj profesionalizmit, besueshmërisë dhe kënaqësisë së klientit. Jemi këtu për të ofruar shërbime me cilësi të lartë në kohë. Përmes përkushtimit dhe ekspertizës së ekipit tonë, synojmë të gjejmë zgjidhjen më të mirë për çdo nevojë mirëmbajtjeje dhe kujdesi të automjetit."
+    },
+    "vision": {
+      "title": "Vizioni ynë",
+      "text": "Vizioni ynë është të mbetemi lider në industrinë e detailing-ut automobilistik, që përfaqëson një nga vlerat tona thelbësore."
+    },
+    "mission": {
+      "title": "Misioni ynë",
+      "text": "Misioni ynë është të ofrojmë vazhdimisht produktet dhe shërbimet me cilësinë më të lartë në Kosovë dhe më gjerë."
+    },
+    "photoAlt": "Ekipi dhe studioja e ADVANCE DETAILING CO.",
+    "values": [
+      "Cilësi",
+      "Besueshmëri",
+      "Përpikëri",
+      "Kënaqësi e klientit"
+    ]
+  },
+  "gallery": {
+    "eyebrow": "Galeria",
+    "title": "Punë që flet vetë.",
+    "intro": "Një përzgjedhje e automjeteve që kemi pasur nderin t'i trajtojmë.",
+    "featuredLabel": "Projekti kryesor",
+    "gridTitle": "Nga studioja",
+    "specialLabel": "Projekt special",
+    "photoAlt": "Fotografia {{n}} nga galeria e ADVANCE DETAILING CO."
+  },
+  "contact": {
+    "eyebrow": "Kontakt",
+    "title": "Le të flasim për automjetin tuaj.",
+    "invitation": "Dëshironi të na vizitoni? Ndalo për një kafe.",
+    "addressLabel": "Adresa",
+    "phoneLabel": "Telefoni",
+    "emailLabel": "Email",
+    "directions": "Merr udhëzimet",
+    "mapTitle": "Harta e vendndodhjes së ADVANCE DETAILING CO.",
+    "mapConsent": "Harta ofrohet nga Google Maps, i cili mund të vendosë cookies. Ngarkojeni vetëm nëse pajtoheni.",
+    "mapLoad": "Ngarko hartën",
+    "form": {
+      "title": "Na dërgoni një mesazh",
+      "name": "Emri i plotë",
+      "email": "Email adresa",
+      "message": "Mesazhi juaj këtu",
+      "consent": "Pajtohem që të dhënat e mia të përpunohen për t'iu përgjigjur kërkesës sime, sipas <privacy>Politikës së Privatësisë</privacy>.",
+      "submit": "Dërgo Mesazhin",
+      "sending": "Duke dërguar…",
+      "required": "E detyrueshme",
+      "errors": {
+        "name": "Ju lutemi shkruani emrin e plotë (të paktën 2 shkronja).",
+        "email": "Ju lutemi shkruani një adresë email të vlefshme.",
+        "message": "Mesazhi duhet të ketë të paktën 10 karaktere.",
+        "consent": "Ju lutemi pranoni përpunimin e të dhënave."
+      },
+      "success": "Faleminderit! Mesazhi juaj u dërgua me sukses. Do t'ju kontaktojmë së shpejti.",
+      "error": "Mesazhi nuk u dërgua. Ju lutemi provoni përsëri ose na kontaktoni me telefon ose email.",
+      "notConfigured": "Formulari i kontaktit ende nuk është lidhur me një shërbim email-i. Ju lutemi na shkruani direkt në email ose na telefononi.",
+      "openEmail": "Hap email-in"
+    }
+  },
+  "social": {
+    "eyebrow": "Rrjetet sociale",
+    "title": "Na Ndiqni Në",
+    "text": "Shikoni projektet më të reja dhe prapaskenat nga studioja jonë.",
+    "follow": "Na ndiqni në {{network}}"
+  },
+  "footer": {
+    "tagline": "Studio premium e detailing-ut automobilistik në Prishtinë, Kosovë.",
+    "navigation": "Navigimi",
+    "contact": "Kontakt",
+    "legal": "Ligjore",
+    "privacy": "Politika e Privatësisë",
+    "cookies": "Politika e Cookies",
+    "terms": "Kushtet e Përdorimit",
+    "cookieSettings": "Cilësimet e Cookies",
+    "rights": "Të gjitha të drejtat e rezervuara.",
+    "backToTop": "Kthehu lart"
+  },
+  "toast": {
+    "close": "Mbyll njoftimin"
+  },
+  "consent": {
+    "title": "Respektojmë privatësinë tuaj",
+    "text": "Përdorim teknologji të domosdoshme për funksionimin e faqes. Me pëlqimin tuaj, mund të ngarkojmë edhe përmbajtje të jashtme (Google Maps) dhe analitikë. Mund ta ndryshoni zgjedhjen në çdo kohë.",
+    "acceptAll": "Prano të gjitha",
+    "rejectAll": "Refuzo jo-thelbësoret",
+    "settings": "Cilësimet e Cookies",
+    "save": "Ruaj zgjedhjen",
+    "policyLink": "Politika e Cookies",
+    "settingsTitle": "Cilësimet e Cookies",
+    "settingsText": "Zgjidhni cilat kategori lejoni. Cookies të domosdoshme janë gjithmonë aktive sepse pa to faqja nuk funksionon.",
+    "alwaysOn": "Gjithmonë aktive",
+    "categories": {
+      "necessary": {
+        "title": "Të domosdoshme",
+        "text": "Ruajnë zgjedhjen tuaj të pëlqimit, gjuhën dhe temën (e errët/e ndritshme). Nuk përdoren për gjurmim."
+      },
+      "analytics": {
+        "title": "Analitikë",
+        "text": "Na ndihmojnë të kuptojmë se si përdoret faqja (Google Analytics), vetëm nëse aktivizohet nga pronari i faqes."
+      },
+      "media": {
+        "title": "Media të jashtme",
+        "text": "Lejojnë ngarkimin e hartës së Google Maps, e cila mund të vendosë cookies nga Google."
+      }
+    }
+  },
+  "legal": {
+    "updated": "2 nëntor 2026",
+    "privacy": {
+      "title": "Politika e Privatësisë",
+      "intro": "Kjo politikë shpjegon se si ADVANCE DETAILING CO. përpunon të dhënat personale kur vizitoni këtë faqe interneti ose na kontaktoni.",
+      "sections": [
+        {
+          "h": "1. Kontrolluesi i të dhënave",
+          "p": [
+            "Kontrollues i të dhënave është ADVANCE DETAILING CO., Xhevat Qena, Prishtinë 10000, Kosovë. Email: info@advancedetailingco.com, Telefon: +383 (0) 49 909 229."
+          ]
+        },
+        {
+          "h": "2. Bazat ligjore",
+          "p": [
+            "Të dhënat përpunohen në përputhje me Ligjin nr. 06/L-082 për Mbrojtjen e të Dhënave Personale të Republikës së Kosovës dhe, kur zbatohet, me Rregulloren e Përgjithshme për Mbrojtjen e të Dhënave të BE-së (GDPR).",
+            "Bazat ligjore që përdorim janë: pëlqimi juaj (p.sh. formulari i kontaktit, media të jashtme, analitika), masat para-kontraktuale me kërkesën tuaj, dhe interesi ynë legjitim për funksionimin e sigurt të faqes."
+          ]
+        },
+        {
+          "h": "3. Cilat të dhëna mbledhim",
+          "p": [
+            "Formulari i kontaktit: emri i plotë, adresa e email-it dhe përmbajtja e mesazhit tuaj.",
+            "Të dhëna teknike: ofruesi i hostimit mund të regjistrojë adresën IP, llojin e shfletuesit dhe kohën e vizitës në regjistrat e serverit për arsye sigurie.",
+            "Preferencat: zgjedhja juaj e gjuhës, temës dhe pëlqimit ruhen vetëm në shfletuesin tuaj (localStorage)."
+          ]
+        },
+        {
+          "h": "4. Qëllimi i përpunimit",
+          "p": [
+            "Përdorim të dhënat vetëm për t'iu përgjigjur kërkesave tuaja, për të organizuar takimet dhe për të siguruar funksionimin e faqes. Nuk i shesim të dhënat tuaja dhe nuk i përdorim për reklamim pa pëlqimin tuaj."
+          ]
+        },
+        {
+          "h": "5. Marrësit dhe përpunuesit",
+          "p": [
+            "Mesazhet e formularit mund të transmetohen përmes një ofruesi të shërbimit të email-it që vepron si përpunues në emrin tonë. Harta e Google Maps dhe Google Analytics ngarkohen vetëm pas pëlqimit tuaj. Kur klikoni lidhjet për Instagram, TikTok ose Facebook, zbatohen politikat e privatësisë së atyre platformave."
+          ]
+        },
+        {
+          "h": "6. Transferimet ndërkombëtare",
+          "p": [
+            "Disa ofrues (p.sh. Google) mund t'i përpunojnë të dhënat jashtë Kosovës ose BE-së. Në këto raste mbështetemi në masa mbrojtëse të përshtatshme, si klauzolat standarde kontraktuale."
+          ]
+        },
+        {
+          "h": "7. Afati i ruajtjes",
+          "p": [
+            "Mesazhet e kontaktit ruhen për aq kohë sa është e nevojshme për trajtimin e kërkesës suaj dhe për detyrimet ligjore, dhe më pas fshihen. Preferencat në shfletues mbeten derisa t'i fshini."
+          ]
+        },
+        {
+          "h": "8. Të drejtat tuaja",
+          "p": [
+            "Keni të drejtë të kërkoni qasje, korrigjim, fshirje, kufizim të përpunimit, transferueshmëri të të dhënave, si dhe të kundërshtoni përpunimin. Mund ta tërhiqni pëlqimin në çdo kohë pa ndikuar në ligjshmërinë e përpunimit të mëparshëm. Na shkruani në info@advancedetailingco.com.",
+            "Keni gjithashtu të drejtë të paraqisni ankesë pranë Agjencisë për Informim dhe Privatësi (AIP) të Kosovës ose pranë autoritetit mbikëqyrës në vendin tuaj të banimit në BE."
+          ]
+        },
+        {
+          "h": "9. Siguria",
+          "p": [
+            "Faqja shërbehet përmes lidhjes së enkriptuar (HTTPS) dhe marrim masa të arsyeshme teknike dhe organizative për mbrojtjen e të dhënave."
+          ]
+        },
+        {
+          "h": "10. Ndryshimet",
+          "p": [
+            "Mund ta përditësojmë këtë politikë. Versioni aktual publikohet gjithmonë në këtë faqe me datën e përditësimit."
+          ]
+        }
+      ]
+    },
+    "cookies": {
+      "title": "Politika e Cookies",
+      "intro": "Kjo politikë shpjegon se si përdoren cookies dhe teknologji të ngjashme (si localStorage) në këtë faqe.",
+      "sections": [
+        {
+          "h": "1. Çfarë janë cookies?",
+          "p": [
+            "Cookies janë skedarë të vegjël teksti që ruhen në pajisjen tuaj. Teknologji të ngjashme, si localStorage, ruajnë informacion direkt në shfletuesin tuaj."
+          ]
+        },
+        {
+          "h": "2. Të domosdoshme (gjithmonë aktive)",
+          "p": [
+            "adc-consent — ruan zgjedhjen tuaj të pëlqimit (localStorage, deri në 12 muaj).",
+            "adc-theme — ruan temën e errët ose të ndritshme (localStorage).",
+            "adc-intro — shënon që intro është parë gjatë sesionit (sessionStorage, fshihet kur mbyllet shfletuesi)."
+          ]
+        },
+        {
+          "h": "3. Analitikë (vetëm me pëlqim)",
+          "p": [
+            "Nëse pronari i faqes e aktivizon Google Analytics dhe ju jepni pëlqimin, Google mund të vendosë cookies si _ga dhe _ga_* (deri në 2 vjet) për statistika anonime të përdorimit. Pa pëlqimin tuaj, asnjë skript analitik nuk ngarkohet."
+          ]
+        },
+        {
+          "h": "4. Media të jashtme (vetëm me pëlqim)",
+          "p": [
+            "Harta e Google Maps në faqen e kontaktit ngarkohet vetëm pasi ta lejoni. Pas ngarkimit, Google mund të vendosë cookies sipas politikës së vet të privatësisë."
+          ]
+        },
+        {
+          "h": "5. Menaxhimi i zgjedhjes",
+          "p": [
+            "Mund ta ndryshoni pëlqimin në çdo kohë përmes lidhjes \"Cilësimet e Cookies\" në fund të faqes. Gjithashtu mund t'i fshini cookies dhe të dhënat e ruajtura nga cilësimet e shfletuesit tuaj."
+          ]
+        }
+      ]
+    },
+    "terms": {
+      "title": "Kushtet e Përdorimit",
+      "intro": "Duke përdorur këtë faqe interneti, pranoni kushtet e mëposhtme.",
+      "sections": [
+        {
+          "h": "1. Informacion i përgjithshëm",
+          "p": [
+            "Kjo faqe operohet nga ADVANCE DETAILING CO., Xhevat Qena, Prishtinë 10000, Kosovë."
+          ]
+        },
+        {
+          "h": "2. Shërbimet dhe rezervimet",
+          "p": [
+            "Informacioni mbi shërbimet në këtë faqe ka karakter informues dhe nuk përbën ofertë detyruese. Çmimet, kohëzgjatja dhe disponueshmëria konfirmohen drejtpërdrejt me ne para fillimit të çdo shërbimi."
+          ]
+        },
+        {
+          "h": "3. Pronësia intelektuale",
+          "p": [
+            "Logoja, emri, tekstet, fotografitë dhe videot në këtë faqe janë pronë e ADVANCE DETAILING CO. ose përdoren me leje. Ndalohet kopjimi ose përdorimi i tyre pa leje paraprake me shkrim."
+          ]
+        },
+        {
+          "h": "4. Lidhjet e jashtme",
+          "p": [
+            "Faqja përmban lidhje drejt platformave të jashtme (Instagram, TikTok, Facebook, Google Maps). Nuk jemi përgjegjës për përmbajtjen ose praktikat e privatësisë së tyre."
+          ]
+        },
+        {
+          "h": "5. Përgjegjësia",
+          "p": [
+            "Përpiqemi që informacioni të jetë i saktë dhe i përditësuar, por nuk garantojmë që faqja do të jetë gjithmonë pa gabime ose pa ndërprerje. Përgjegjësia jonë kufizohet në masën e lejuar nga ligji."
+          ]
+        },
+        {
+          "h": "6. Ligji i zbatueshëm",
+          "p": [
+            "Këto kushte rregullohen nga ligjet e Republikës së Kosovës."
+          ]
+        },
+        {
+          "h": "7. Ndryshimet",
+          "p": [
+            "Mund t'i ndryshojmë këto kushte në çdo kohë. Versioni aktual publikohet në këtë faqe."
+          ]
+        },
+        {
+          "h": "8. Kontakti",
+          "p": [
+            "Për pyetje: info@advancedetailingco.com ose +383 (0) 49 909 229."
+          ]
+        }
+      ]
+    }
+  },
+  "notFound": {
+    "title": "Faqja nuk u gjet",
+    "text": "Faqja që kërkuat nuk ekziston ose është zhvendosur.",
+    "cta": "Kthehu në ballinë"
+  }
+}
