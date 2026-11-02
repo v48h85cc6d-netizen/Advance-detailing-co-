@@ -8,6 +8,9 @@ import { LanguageSwitcher } from './LanguageSwitcher';
 import { useLang } from '../lib/useLang';
 import { business } from '../config/site';
 import { cn } from '../lib/cn';
+import { visual } from '../lib/visual';
+
+const ve = visual('src/components/Navbar.tsx');
 
 export const NAV_ITEMS = [
   { key: 'home', path: '/' },
@@ -57,13 +60,14 @@ export function Navbar() {
         className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4"
       >
         <nav
+          {...ve('nav.bar', 'nav')}
           aria-label={t('a11y.mainNav')}
           className={cn(
             'glass mx-auto flex h-16 max-w-[1440px] items-center justify-between gap-4 rounded-full pl-5 pr-2.5 transition-[box-shadow,background-color] duration-500 sm:h-[4.25rem] sm:pl-7',
             scrolled && 'shadow-[var(--shadow)]',
           )}
         >
-          <Link to={to('/')} aria-label={t('a11y.home')} className="flex h-8 shrink-0 items-center sm:h-9" data-testid="nav-logo">
+          <Link {...ve('nav.logo', 'image')} to={to('/')} aria-label={t('a11y.home')} className="flex h-8 shrink-0 items-center sm:h-9" data-testid="nav-logo">
             <Logo variant="nav" className="h-full" eager />
           </Link>
 
@@ -74,6 +78,7 @@ export function Navbar() {
               return (
                 <li key={item.key}>
                   <NavLink
+                    {...ve(`nav.link.${item.key}`, 'nav', { key: `nav.${item.key}` })}
                     to={to(item.path)}
                     end={item.path === '/'}
                     aria-current={active ? 'page' : undefined}
@@ -102,7 +107,7 @@ export function Navbar() {
               <LanguageSwitcher />
             </div>
             <ThemeToggle />
-            <Link to={to('/contact')} className="btn btn-primary !hidden !px-5 !py-3 xl:!inline-flex" style={{ minHeight: 44 }}>
+            <Link {...ve('nav.book', 'button', { key: 'nav.book' })} to={to('/contact')} className="btn btn-primary !hidden !px-5 !py-3 xl:!inline-flex" style={{ minHeight: 44 }}>
               {t('nav.book')}
             </Link>
             <button

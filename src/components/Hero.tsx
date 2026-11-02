@@ -8,6 +8,9 @@ import { supportsWebGL } from '../lib/webgl';
 import { coverImage } from '../config/images';
 import { Logo } from './Logo';
 import { ArrowIcon } from './Icons';
+import { visual } from '../lib/visual';
+
+const ve = visual('src/components/Hero.tsx');
 
 const PyramidScene = lazy(() => import('../three/PyramidScene'));
 
@@ -50,7 +53,7 @@ export function Hero({ ready }: { ready: boolean }) {
   );
 
   return (
-    <section ref={root} className="relative isolate flex min-h-[100svh] flex-col overflow-hidden" aria-labelledby="hero-title" data-testid="hero">
+    <section {...ve('home.hero', 'section')} ref={root} className="relative isolate flex min-h-[100svh] flex-col overflow-hidden" aria-labelledby="hero-title" data-testid="hero">
       {/* Atmosphere */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
         {heroImage && <img src={heroImage} alt="" className="absolute inset-0 h-full w-full object-cover opacity-30" fetchPriority="high" />}
@@ -61,7 +64,7 @@ export function Hero({ ready }: { ready: boolean }) {
 
       <div className="container-lux relative grid grid-cols-1 flex-1 grid-rows-[auto_1fr] items-center gap-4 pt-24 pb-10 lg:grid-cols-[1.05fr_1fr] lg:grid-rows-1 lg:gap-0 lg:pt-28">
         {/* 3D scene */}
-        <div data-hero="scene" className="relative order-1 h-[38svh] min-h-[260px] opacity-0 lg:order-2 lg:h-[78svh] lg:max-h-[760px]">
+        <div {...ve('home.hero.scene', 'container')} data-hero="scene" className="relative order-1 h-[38svh] min-h-[260px] opacity-0 lg:order-2 lg:h-[78svh] lg:max-h-[760px]">
           {webgl ? (
             <Suspense fallback={<SymbolFallback />}>
               <PyramidScene active={ready} dark={theme === 'dark'} />
@@ -72,26 +75,26 @@ export function Hero({ ready }: { ready: boolean }) {
         </div>
 
         <div data-hero="content" className="relative order-2 flex flex-col gap-7 [container-type:inline-size] lg:order-1 lg:gap-9">
-          <span data-hero="fade" className="eyebrow opacity-0">
+          <span {...ve('home.hero.eyebrow', 'text', { key: 'hero.eyebrow' })} data-hero="fade" className="eyebrow opacity-0">
             {t('hero.eyebrow')}
           </span>
           <h1 id="hero-title" className="display text-[clamp(1.9rem,9.6cqw,6.4rem)] uppercase !leading-[0.95] [hyphens:manual]">
             <span className="sr-only">ADVANCE DETAILING CO. — </span>
             {pillars.map((p, i) => (
-              <span key={p} data-hero="line" className="-mt-[0.14em] block overflow-hidden pt-[0.14em] pb-[0.06em] first:mt-0">
+              <span key={p} {...ve(`home.hero.pillar.${i}`, 'text', { key: `pillars.${i}` })} data-hero="line" className="-mt-[0.14em] block overflow-hidden pt-[0.14em] pb-[0.06em] first:mt-0">
                 <span className={`inline-block ${i % 2 ? 'text-silver' : ''}`}>{p}.</span>
               </span>
             ))}
           </h1>
           <div data-hero="fade" className="flex max-w-xl flex-col gap-4 opacity-0">
-            <p className="serif-accent text-2xl text-fg sm:text-3xl">{t('hero.title')}</p>
-            <p className="lead">{t('hero.subtitle')}</p>
+            <p {...ve('home.hero.title', 'text', { key: 'hero.title' })} className="serif-accent text-2xl text-fg sm:text-3xl">{t('hero.title')}</p>
+            <p {...ve('home.hero.subtitle', 'text', { key: 'hero.subtitle' })} className="lead">{t('hero.subtitle')}</p>
           </div>
           <div data-hero="fade" className="flex flex-col gap-3 opacity-0 xs:flex-row">
-            <Link to={to('/contact')} className="btn btn-primary" data-testid="hero-cta">
+            <Link {...ve('home.hero.cta-primary', 'button', { key: 'hero.ctaPrimary' })} to={to('/contact')} className="btn btn-primary" data-testid="hero-cta">
               {t('hero.ctaPrimary')} <ArrowIcon width={16} height={16} />
             </Link>
-            <Link to={to('/services')} className="btn btn-ghost">
+            <Link {...ve('home.hero.cta-secondary', 'button', { key: 'hero.ctaSecondary' })} to={to('/services')} className="btn btn-ghost">
               {t('hero.ctaSecondary')}
             </Link>
           </div>

@@ -15,6 +15,9 @@ import { featuredProjects, getProject } from '../config/projects';
 import { coverImage, named, folderImages } from '../config/images';
 import { usePageSeo } from '../lib/usePageSeo';
 import { useLang } from '../lib/useLang';
+import { visual } from '../lib/visual';
+
+const ve = visual('src/pages/Home.tsx');
 
 export default function Home({ ready }: { ready: boolean }) {
   const { t } = useT();
@@ -28,10 +31,10 @@ export default function Home({ ready }: { ready: boolean }) {
       <Hero ready={ready} />
       <Marquee />
 
-      <section id="featured" className="section scroll-mt-24" aria-labelledby="featured-title">
+      <section {...ve('home.featured', 'section')} id="featured" className="section scroll-mt-24" aria-labelledby="featured-title">
         <div className="container-lux">
           <div id="featured-title">
-            <SectionHeading eyebrow={t('home.featured.eyebrow')} title={t('home.featured.title')} text={t('home.featured.text')} />
+            <SectionHeading i18nBase="home.featured" eyebrow={t('home.featured.eyebrow')} title={t('home.featured.title')} text={t('home.featured.text')} />
           </div>
           <Reveal className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8" stagger={0.12}>
             {featuredProjects.map((p, i) => (
@@ -48,7 +51,7 @@ export default function Home({ ready }: { ready: boolean }) {
       <CertCarousel />
 
       {/* Lamborghini spotlight */}
-      <section className="section pt-0" aria-labelledby="spotlight-title">
+      <section {...ve('home.spotlight', 'section')} className="section pt-0" aria-labelledby="spotlight-title">
         <div className="container-lux">
           <Link to={to(`/projects/${lambo.slug}`)} className="group block" data-testid="spotlight-link">
             <ParallaxReveal className="relative aspect-[4/5] rounded-[1.75rem] sm:aspect-[16/9]">
@@ -79,7 +82,7 @@ export default function Home({ ready }: { ready: boolean }) {
       </section>
 
       {/* About teaser */}
-      <section className="section border-t border-line" aria-labelledby="about-teaser-title">
+      <section {...ve('home.about', 'section')} className="section border-t border-line" aria-labelledby="about-teaser-title">
         <div className="container-lux grid grid-cols-1 items-center gap-14 lg:grid-cols-2 lg:gap-24">
           <ParallaxReveal className="relative aspect-[4/5] rounded-[1.75rem] lg:aspect-[5/6]">
             <div data-parallax className="absolute -inset-y-[10%] inset-x-0">
@@ -89,7 +92,7 @@ export default function Home({ ready }: { ready: boolean }) {
           </ParallaxReveal>
           <div className="flex flex-col gap-8">
             <span className="eyebrow">{t('home.about.eyebrow')}</span>
-            <SplitHeading id="about-teaser-title" text={t('home.about.title')} className="h-display-lg" />
+            <SplitHeading id="about-teaser-title" text={t('home.about.title')} className="h-display-lg" visual={ve('home.about.title', 'text', { key: 'home.about.title' })} />
             <Reveal>
               <p className="lead">{t('about.founded.text')}</p>
             </Reveal>
@@ -103,7 +106,7 @@ export default function Home({ ready }: { ready: boolean }) {
       </section>
 
       <SocialSection />
-      <CtaBand title={t('home.cta.title')} text={t('home.cta.text')} />
+      <CtaBand title={t('home.cta.title')} text={t('home.cta.text')} keys={{ title: 'home.cta.title', text: 'home.cta.text' }} />
     </>
   );
 }

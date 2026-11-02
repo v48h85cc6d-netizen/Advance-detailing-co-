@@ -3,19 +3,23 @@ import { useT } from '../lib/useT';
 import { social } from '../config/site';
 import { ArrowUpRight, SocialIcon } from './Icons';
 import { Reveal, SectionHeading } from './Reveal';
+import { visual } from '../lib/visual';
+
+const ve = visual('src/components/SocialSection.tsx');
 
 export function SocialSection() {
   const { t } = useT();
   return (
-    <section className="section border-t border-line" aria-labelledby="social-title" data-testid="social">
+    <section {...ve('social', 'section')} className="section border-t border-line" aria-labelledby="social-title" data-testid="social">
       <div className="container-lux">
         <div id="social-title">
-          <SectionHeading eyebrow={t('social.eyebrow')} title={t('social.title')} text={t('social.text')} />
+          <SectionHeading i18nBase="social" eyebrow={t('social.eyebrow')} title={t('social.title')} text={t('social.text')} />
         </div>
         <Reveal className="mt-14 grid grid-cols-1 gap-4 md:grid-cols-3">
           {social.map((s) => (
             <motion.a
               key={s.id}
+              {...ve(`social.link.${s.id}`, 'button')}
               data-reveal
               href={s.url}
               target="_blank"

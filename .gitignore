@@ -6,3 +6,4 @@ dist
 .DS_Store
 assets-originals
 release
+.visual-editor

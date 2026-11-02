@@ -9,6 +9,9 @@ import { NotConfiguredError, submitContact } from '../lib/submitContact';
 import { useToast } from './Toast';
 import { ArrowIcon } from './Icons';
 import { cn } from '../lib/cn';
+import { visual } from '../lib/visual';
+
+const ve = visual('src/components/ContactForm.tsx');
 
 type Field = 'name' | 'email' | 'message' | 'consent';
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -182,7 +185,7 @@ export function ContactForm() {
         {err('consent')}
       </div>
 
-      <button type="submit" disabled={status === 'sending'} className={cn('btn btn-primary mt-2 w-full sm:w-auto sm:self-start')} data-testid="contact-submit">
+      <button {...ve('contact.form.submit', 'button', { key: 'contact.form.submit' })} type="submit" disabled={status === 'sending'} className={cn('btn btn-primary mt-2 w-full sm:w-auto sm:self-start')} data-testid="contact-submit">
         <AnimatePresence mode="wait" initial={false}>
           {status === 'sending' ? (
             <motion.span key="s" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} className="flex items-center gap-3">

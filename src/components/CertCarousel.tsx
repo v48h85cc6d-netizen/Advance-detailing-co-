@@ -6,6 +6,9 @@ import { named } from '../config/images';
 import { ChevronIcon } from './Icons';
 import { SectionHeading } from './Reveal';
 import { cn } from '../lib/cn';
+import { visual } from '../lib/visual';
+
+const ve = visual('src/components/CertCarousel.tsx');
 
 const INTERVAL = 4500;
 
@@ -32,10 +35,10 @@ export function CertCarousel({ headingAs = 'h2' }: { headingAs?: 'h2' | 'h3' }) 
   const logoSrc = named('certifications', cert.logoFile);
 
   return (
-    <section className="section relative overflow-hidden" aria-labelledby="certs-title" data-testid="certifications">
+    <section {...ve('certifications', 'section')} className="section relative overflow-hidden" aria-labelledby="certs-title" data-testid="certifications">
       <div className="container-lux grid grid-cols-1 items-center gap-14 lg:grid-cols-[1fr_1.15fr]">
         <div id="certs-title">
-          <SectionHeading as={headingAs} eyebrow={t('certifications.eyebrow')} title={t('certifications.title')} text={t('certifications.text')} />
+          <SectionHeading i18nBase="certifications" as={headingAs} eyebrow={t('certifications.eyebrow')} title={t('certifications.title')} text={t('certifications.text')} />
         </div>
 
         <div
@@ -49,7 +52,7 @@ export function CertCarousel({ headingAs = 'h2' }: { headingAs?: 'h2' | 'h3' }) 
           aria-label={t('certifications.title')}
           data-paused={paused ? 'true' : 'false'}
         >
-          <div className="card-lux noise relative aspect-[5/4] w-full overflow-hidden sm:aspect-[16/11]" style={{ perspective: 1400 }}>
+          <div {...ve('certifications.card', 'card')} className="card-lux noise relative aspect-[5/4] w-full overflow-hidden sm:aspect-[16/11]" style={{ perspective: 1400 }}>
             <div className="tri-pattern absolute inset-0 opacity-50" aria-hidden="true" />
             <AnimatePresence initial={false} custom={dir} mode="popLayout">
               <motion.div
@@ -81,7 +84,7 @@ export function CertCarousel({ headingAs = 'h2' }: { headingAs?: 'h2' | 'h3' }) 
                   <span className="text-silver animate-shimmer text-5xl font-bold uppercase tracking-[0.12em] sm:text-7xl">{cert.name}</span>
                 )}
                 <span className="h-px w-16 bg-line-strong" aria-hidden="true" />
-                <p className="max-w-sm text-lg font-medium tracking-tight sm:text-2xl">{t(`certifications.items.${cert.id}`)}</p>
+                <p {...ve(`certifications.item.${cert.id}`, 'text', { key: `certifications.items.${cert.id}` })} className="max-w-sm text-lg font-medium tracking-tight sm:text-2xl">{t(`certifications.items.${cert.id}`)}</p>
                 <span className="text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-muted">{t('certifications.label')}</span>
               </motion.div>
             </AnimatePresence>

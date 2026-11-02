@@ -1,0 +1,9 @@
+# Notes for Claude Code
+
+- Stack: React 19 + TypeScript + Vite 7 + Tailwind 4, GSAP/ScrollTrigger, Motion, R3F. Languages sq (default, `/`), en (`/en`), de (`/de`); all text in `src/locales/*.json`.
+- Build: `npm run build` (tsc + vite + `scripts/generate-pages.mjs` → 39 SEO pages). Tests: `npm run preview` then `npm test` (97 checks); editor: `npm run dev` then `npm run test:editor`.
+- **Private Visual Editor** (`/visual-editor`, dev only — see `visual-editor/README.md`). When asked to implement editor changes:
+  1. Read `.visual-editor/draft-export.json` (or `draft.json`) / the pasted change request. Only `status: "draft"` items are pending.
+  2. Implement in the real source: text → `src/locales/<lang>.json` key; styles → Tailwind classes/tokens in the listed component (dark + light theme); images → copy from `.visual-editor/uploads/` into `public/assets/<folder>/`.
+  3. Run `npm run build` and the tests. Only after verification set `"status": "implemented"` (and an `implementationNote`) for those changes in `.visual-editor/draft.json`. Never mark unverified changes as implemented.
+- Never modify production behaviour while working on the editor; keep editor code in `/visual-editor`, `vite-plugins/visual-editor.ts` and `src/lib/visual.ts` (`ve()` annotations are stripped from production builds).

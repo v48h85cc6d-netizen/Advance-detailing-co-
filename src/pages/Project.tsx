@@ -11,6 +11,9 @@ import { coverImage, slots } from '../config/images';
 import { usePageSeo } from '../lib/usePageSeo';
 import { useLang } from '../lib/useLang';
 import NotFound from './NotFound';
+import { visual } from '../lib/visual';
+
+const ve = visual('src/pages/Project.tsx');
 
 export default function Project() {
   const { slug = '' } = useParams();
@@ -38,7 +41,7 @@ function ProjectView({ slug }: { slug: string }) {
 
   return (
     <article data-testid={`project-${slug}`} data-folder={project.folder}>
-      <header className="relative pt-32 pb-12 sm:pt-40 sm:pb-16">
+      <header {...ve('project.header', 'section')} className="relative pt-32 pb-12 sm:pt-40 sm:pb-16">
         <div className="container-lux flex flex-col gap-8">
           <Link to={to('/gallery')} className="group inline-flex items-center gap-2 self-start text-xs font-semibold uppercase tracking-[0.25em] text-muted hover:text-fg">
             <ChevronIcon dir="left" width={16} height={16} className="transition-transform group-hover:-translate-x-1" />
@@ -48,12 +51,12 @@ function ProjectView({ slug }: { slug: string }) {
             {t('projects.eyebrow')} · {String(idx + 1).padStart(2, '0')}
             {project.badge ? ` · ${project.badge}` : ''}
           </span>
-          <SplitHeading as="h1" text={t(`${p}.title`)} immediate className="h-display-xl max-w-[18ch]" />
+          <SplitHeading as="h1" text={t(`${p}.title`)} immediate className="h-display-xl max-w-[18ch]" visual={ve('project.title', 'text', { key: `${p}.title` })} />
           {slug === 'ferrari-488-pista' && <p className="serif-accent text-3xl text-fg-2">{t(`${p}.vehicle`)}</p>}
         </div>
       </header>
 
-      <section className="container-lux" aria-label={t(`${p}.vehicle`)}>
+      <section {...ve('project.cover', 'section')} className="container-lux" aria-label={t(`${p}.vehicle`)}>
         <ParallaxReveal className="relative aspect-[4/5] rounded-[1.75rem] sm:aspect-[16/9]">
           <div data-parallax className="absolute -inset-y-[10%] inset-x-0">
             <ImageSlot src={coverImage(project.folder)} alt={`${t(`${p}.vehicle`)} — ${t(`${p}.service`)}`} folder={project.folder} className="h-full w-full" priority />
@@ -61,7 +64,7 @@ function ProjectView({ slug }: { slug: string }) {
         </ParallaxReveal>
       </section>
 
-      <section className="section" aria-labelledby="details-title">
+      <section {...ve('project.details', 'section')} className="section" aria-labelledby="details-title">
         <div className="container-lux grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.3fr] lg:gap-24">
           <div>
             <h2 id="details-title" className="eyebrow">
@@ -85,12 +88,12 @@ function ProjectView({ slug }: { slug: string }) {
             </dl>
           </div>
           <Reveal>
-            <p className="text-[clamp(1.3rem,2.2vw,2rem)] font-light leading-[1.5] tracking-tight">{t(`${p}.description`)}</p>
+            <p {...ve('project.description', 'text', { key: `${p}.description` })} className="text-[clamp(1.3rem,2.2vw,2rem)] font-light leading-[1.5] tracking-tight">{t(`${p}.description`)}</p>
           </Reveal>
         </div>
       </section>
 
-      <section className="pb-24" aria-labelledby="project-gallery-title">
+      <section {...ve('project.gallery', 'section')} className="pb-24" aria-labelledby="project-gallery-title">
         <div className="container-lux">
           <h2 id="project-gallery-title" className="eyebrow mb-10">
             {t('projects.galleryTitle')}
@@ -110,7 +113,7 @@ function ProjectView({ slug }: { slug: string }) {
         </div>
       </section>
 
-      <section className="border-y border-line">
+      <section {...ve('project.next', 'section')} className="border-y border-line">
         <Link to={to(`/projects/${next.slug}`)} className="group container-lux flex flex-col gap-4 py-16 sm:flex-row sm:items-center sm:justify-between sm:py-24" data-testid="next-project">
           <span className="eyebrow">{t('common.nextProject')}</span>
           <span className="flex items-center gap-6 text-[clamp(1.6rem,4vw,3.5rem)] font-semibold tracking-tight">
@@ -120,7 +123,7 @@ function ProjectView({ slug }: { slug: string }) {
         </Link>
       </section>
 
-      <CtaBand title={t('projects.ctaTitle')} text={t('projects.ctaText')} />
+      <CtaBand title={t('projects.ctaTitle')} text={t('projects.ctaText')} keys={{ title: 'projects.ctaTitle', text: 'projects.ctaText' }} />
       <Lightbox items={items} index={open} onClose={() => setOpen(null)} onIndex={setOpen} />
     </article>
   );

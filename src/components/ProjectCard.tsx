@@ -7,6 +7,9 @@ import { useLang } from '../lib/useLang';
 import { ImageSlot } from './ImageSlot';
 import { ArrowIcon } from './Icons';
 import { cn } from '../lib/cn';
+import { visual } from '../lib/visual';
+
+const ve = visual('src/components/ProjectCard.tsx');
 
 /** Featured vehicle card with 3D tilt, glare and image zoom on hover. */
 export function ProjectCard({ project, index, className, titleAs: Title = 'h3' }: { project: Project; index: number; className?: string; titleAs?: 'h2' | 'h3' }) {
@@ -25,6 +28,7 @@ export function ProjectCard({ project, index, className, titleAs: Title = 'h3' }
 
   return (
     <motion.article
+      {...ve(`card.project.${project.slug}`, 'card')}
       data-testid={`project-card-${project.slug}`}
       onPointerMove={(e) => {
         if (e.pointerType !== 'mouse') return;
@@ -58,12 +62,13 @@ export function ProjectCard({ project, index, className, titleAs: Title = 'h3' }
       </Link>
       <div className="flex flex-1 flex-col gap-5 p-6 sm:p-7" style={{ transform: 'translateZ(30px)' }}>
         <div className="flex flex-col gap-2">
-          <span className="text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-muted">{t(`${p}.service`)}</span>
-          <Title className="text-xl font-semibold leading-tight tracking-tight sm:text-2xl">{t(`${p}.vehicle`)}</Title>
+          <span {...ve(`card.project.${project.slug}.service`, 'text', { key: `${p}.service` })} className="text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-muted">{t(`${p}.service`)}</span>
+          <Title {...ve(`card.project.${project.slug}.vehicle`, 'text', { key: `${p}.vehicle` })} className="text-xl font-semibold leading-tight tracking-tight sm:text-2xl">{t(`${p}.vehicle`)}</Title>
           {project.slug === 'ferrari-488-pista' && <p className="serif-accent text-lg text-fg-2">{t(`${p}.title`)}</p>}
           {color && <p className="text-sm text-fg-2">{color}</p>}
         </div>
         <Link
+          {...ve(`card.project.${project.slug}.cta`, 'button', { key: 'common.viewMore' })}
           to={href}
           data-testid={`project-link-${project.slug}`}
           className="mt-auto inline-flex items-center gap-3 self-start border-b border-line-strong pb-1.5 text-[0.75rem] font-semibold uppercase tracking-[0.22em] transition-colors hover:border-fg"

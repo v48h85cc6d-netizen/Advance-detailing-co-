@@ -6,6 +6,9 @@ import { certifications } from '../config/certifications';
 import { business } from '../config/site';
 import { Reveal, SectionHeading } from './Reveal';
 import { gsap, prefersReducedMotion, useGSAP } from '../lib/gsap';
+import { visual } from '../lib/visual';
+
+const ve = visual('src/components/StudioSection.tsx');
 
 /** Studio showcase — reuses the supplied intro footage, loaded lazily and played only while visible. */
 export function StudioSection() {
@@ -46,11 +49,11 @@ export function StudioSection() {
   ];
 
   return (
-    <section ref={ref} className="section relative overflow-hidden bg-bg-2" aria-labelledby="studio-title">
+    <section {...ve('home.studio', 'section')} ref={ref} className="section relative overflow-hidden bg-bg-2" aria-labelledby="studio-title">
       <div className="container-lux grid grid-cols-1 items-center gap-16 lg:grid-cols-[1fr_auto] lg:gap-24">
         <div className="flex flex-col gap-14">
           <div id="studio-title">
-            <SectionHeading eyebrow={t('home.studio.eyebrow')} title={t('home.studio.title')} text={t('home.studio.text')} />
+            <SectionHeading i18nBase="home.studio" eyebrow={t('home.studio.eyebrow')} title={t('home.studio.title')} text={t('home.studio.text')} />
           </div>
           <Reveal className="grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-line bg-line">
             {stats.map((s) => (
@@ -62,7 +65,7 @@ export function StudioSection() {
           </Reveal>
         </div>
         <div className="mx-auto w-full max-w-[22rem]" style={{ perspective: 1400 }}>
-          <div data-studio-frame className="relative aspect-[9/16] overflow-hidden rounded-[2.25rem] border border-line-strong bg-black shadow-[var(--shadow)]">
+          <div {...ve('home.studio.video', 'container')} data-studio-frame className="relative aspect-[9/16] overflow-hidden rounded-[2.25rem] border border-line-strong bg-black shadow-[var(--shadow)]">
             <video
               ref={video}
               className="h-full w-full object-cover"

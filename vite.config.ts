@@ -2,9 +2,10 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import { assetManifest } from './vite-plugins/asset-manifest';
+import { visualEditorDev, visualEditorStrip } from './vite-plugins/visual-editor';
 
 export default defineConfig({
-  plugins: [react(), tailwindcss(), assetManifest()],
+  plugins: [visualEditorStrip(), react(), tailwindcss(), assetManifest(), visualEditorDev()],
   build: {
     target: 'es2022',
     cssCodeSplit: true,

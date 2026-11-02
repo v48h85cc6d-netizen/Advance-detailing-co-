@@ -1,6 +1,9 @@
 import { useRef, type ElementType, type ReactNode } from 'react';
 import { gsap, prefersReducedMotion, useGSAP } from '../lib/gsap';
 import { cn } from '../lib/cn';
+import { visual } from '../lib/visual';
+
+const ve = visual('src/components/Reveal.tsx');
 
 /** Fades/lifts children into view on scroll (GSAP ScrollTrigger). Children with [data-reveal] are staggered. */
 export function Reveal({ children, className, as: Tag = 'div', stagger = 0.08, y = 40, delay = 0 }: { children: ReactNode; className?: string; as?: ElementType; stagger?: number; y?: number; delay?: number }) {
@@ -29,7 +32,7 @@ export function Reveal({ children, className, as: Tag = 'div', stagger = 0.08, y
 }
 
 /** Headline that reveals word-by-word from behind a mask. */
-export function SplitHeading({ text, as: Tag = 'h2', className, delay = 0, immediate = false, id }: { text: string; as?: ElementType; className?: string; delay?: number; immediate?: boolean; id?: string }) {
+export function SplitHeading({ text, as: Tag = 'h2', className, delay = 0, immediate = false, id, visual: vis }: { text: string; as?: ElementType; className?: string; delay?: number; immediate?: boolean; id?: string; visual?: Record<string, string> }) {
   const ref = useRef<HTMLElement>(null);
   useGSAP(
     () => {
@@ -48,7 +51,7 @@ export function SplitHeading({ text, as: Tag = 'h2', className, delay = 0, immed
     { scope: ref, dependencies: [text] },
   );
   return (
-    <Tag ref={ref} id={id} className={cn('display', className)} aria-label={text}>
+    <Tag ref={ref} id={id} {...vis} className={cn('display', className)} aria-label={text}>
       {text.split(' ').map((w, i, arr) => (
         <span key={i}>
           <span aria-hidden="true" className="-mt-[0.12em] inline-block max-w-full overflow-hidden pt-[0.12em] pb-[0.08em] align-bottom">
@@ -81,14 +84,14 @@ export function ParallaxReveal({ children, className, amount = 8 }: { children: 
   );
 }
 
-export function SectionHeading({ eyebrow, title, text, align = 'left', className, as = 'h2' }: { eyebrow?: string; title: string; text?: string; align?: 'left' | 'center'; className?: string; as?: ElementType }) {
+export function SectionHeading({ eyebrow, title, text, align = 'left', className, as = 'h2', i18nBase }: { eyebrow?: string; title: string; text?: string; align?: 'left' | 'center'; className?: string; as?: ElementType; i18nBase?: string }) {
   return (
     <div className={cn('flex flex-col gap-6', align === 'center' && 'items-center text-center', className)}>
-      {eyebrow && <span className="eyebrow">{eyebrow}</span>}
-      <SplitHeading as={as} text={title} className="h-display-lg max-w-[18ch]" />
+      {eyebrow && <span {...(i18nBase ? ve(`${i18nBase}.eyebrow`, 'text', { key: `${i18nBase}.eyebrow` }) : {})} className="eyebrow">{eyebrow}</span>}
+      <SplitHeading as={as} text={title} className="h-display-lg max-w-[18ch]" visual={i18nBase ? ve(`${i18nBase}.title`, 'text', { key: `${i18nBase}.title` }) : undefined} />
       {text && (
         <Reveal>
-          <p className={cn('lead max-w-xl', align === 'center' && 'mx-auto')}>{text}</p>
+          <p {...(i18nBase ? ve(`${i18nBase}.text`, 'text', { key: `${i18nBase}.text` }) : {})} className={cn('lead max-w-xl', align === 'center' && 'mx-auto')}>{text}</p>
         </Reveal>
       )}
     </div>

@@ -227,3 +227,18 @@ certification carousel (auto, arrows, pause-on-hover), the 3 homepage projects o
 & BMW M135i projects, 16 gallery placeholders, lightbox, contact form validation & honest error handling, social links,
 cookie consent & GDPR gating, legal pages, no horizontal scrolling from 360 px to 1920 px, console errors, broken links,
 and reduced-motion support.
+
+---
+
+## 10. Private Visual Editor (development only)
+
+```bash
+npm run dev
+# → http://localhost:5173/__visual-editor
+```
+
+Select any element of the real website, edit text (all 3 languages), typography, colors, images, layout and sections in a
+live preview (desktop / tablet / mobile), with undo/redo and drafts that survive refreshes. Changes are **drafts only** —
+the source code is never modified by the editor. Export them with **Copy Change Request** or **Export Draft JSON**
+(also auto-saved to `.visual-editor/`) and ask Claude Code to implement them. The editor does not exist in production
+builds. Full guide: [`visual-editor/README.md`](visual-editor/README.md).

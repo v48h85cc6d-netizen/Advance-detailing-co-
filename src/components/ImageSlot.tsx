@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { useT } from '../lib/useT';
 import { cn } from '../lib/cn';
+import { visual } from '../lib/visual';
+
+const ve = visual('src/components/ImageSlot.tsx');
 
 /**
  * A single, independent image container. If `src` is undefined (no photo uploaded yet)
@@ -34,7 +37,7 @@ export function ImageSlot({
   const hasImage = Boolean(src) && !failed;
 
   return (
-    <div className={cn(/\b(absolute|fixed)\b/.test(className ?? '') ? '' : 'relative', 'overflow-hidden', className)} data-slot={folder} data-filled={hasImage ? 'true' : 'false'}>
+    <div {...ve(`image.${folder ?? 'misc'}.${index !== undefined ? String(index).padStart(2, '0') : 'cover'}`, 'image')} className={cn(/\b(absolute|fixed)\b/.test(className ?? '') ? '' : 'relative', 'overflow-hidden', className)} data-slot={folder} data-filled={hasImage ? 'true' : 'false'}>
       {hasImage ? (
         <img
           src={src}

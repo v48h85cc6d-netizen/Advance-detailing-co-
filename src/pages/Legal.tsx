@@ -2,6 +2,9 @@ import { useT } from '../lib/useT';
 import { PageHeader } from '../components/PageHeader';
 import { usePageSeo } from '../lib/usePageSeo';
 import { useConsent } from '../lib/consent';
+import { visual } from '../lib/visual';
+
+const ve = visual('src/pages/Legal.tsx');
 
 type Doc = 'privacy' | 'cookies' | 'terms';
 
@@ -12,8 +15,8 @@ export default function Legal({ doc }: { doc: Doc }) {
   const sections = t(`legal.${doc}.sections`, { returnObjects: true }) as { h: string; p: string[] }[];
   return (
     <>
-      <PageHeader eyebrow={`${t('common.lastUpdated')}: ${t('legal.updated')}`} title={t(`legal.${doc}.title`)} text={t(`legal.${doc}.intro`)} />
-      <section className="pb-28" data-testid={`legal-${doc}`}>
+      <PageHeader page={doc} keys={{ title: `legal.${doc}.title`, text: `legal.${doc}.intro` }} eyebrow={`${t('common.lastUpdated')}: ${t('legal.updated')}`} title={t(`legal.${doc}.title`)} text={t(`legal.${doc}.intro`)} />
+      <section {...ve(`${doc}.content`, 'section')} className="pb-28" data-testid={`legal-${doc}`}>
         <div className="container-lux">
           <div className="mx-auto max-w-3xl">
             {sections.map((s) => (

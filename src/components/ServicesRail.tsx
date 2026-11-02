@@ -7,6 +7,9 @@ import { useLang } from '../lib/useLang';
 import { ServiceCard } from './ServiceCard';
 import { ArrowIcon } from './Icons';
 import { SectionHeading } from './Reveal';
+import { visual } from '../lib/visual';
+
+const ve = visual('src/components/ServicesRail.tsx');
 
 /** Homepage services: pinned horizontal scroll on desktop, swipeable rail on touch screens. */
 export function ServicesRail() {
@@ -33,12 +36,12 @@ export function ServicesRail() {
   );
 
   return (
-    <section ref={section} className="relative flex flex-col justify-center overflow-hidden py-24 lg:min-h-[100svh] lg:py-16" aria-labelledby="home-services-title" data-testid="home-services">
+    <section {...ve('home.services', 'section')} ref={section} className="relative flex flex-col justify-center overflow-hidden py-24 lg:min-h-[100svh] lg:py-16" aria-labelledby="home-services-title" data-testid="home-services">
       <div className="container-lux mb-12 flex flex-col justify-between gap-8 lg:mb-14 lg:flex-row lg:items-end">
         <div id="home-services-title">
-          <SectionHeading eyebrow={t('home.services.eyebrow')} title={t('home.services.title')} text={t('home.services.text')} />
+          <SectionHeading i18nBase="home.services" eyebrow={t('home.services.eyebrow')} title={t('home.services.title')} text={t('home.services.text')} />
         </div>
-        <Link to={to('/services')} className="btn btn-ghost self-start lg:self-end">
+        <Link {...ve('home.services.cta', 'button', { key: 'common.allServices' })} to={to('/services')} className="btn btn-ghost self-start lg:self-end">
           {t('common.allServices')} <ArrowIcon width={16} height={16} />
         </Link>
       </div>

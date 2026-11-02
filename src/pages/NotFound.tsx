@@ -10,7 +10,7 @@ export default function NotFound() {
   usePageSeo('notFound', { noindex: true });
   return (
     <div className="min-h-[70vh]">
-      <PageHeader eyebrow="404" title={t('notFound.title')} text={t('notFound.text')}>
+      <PageHeader page="notFound" keys={{ title: 'notFound.title', text: 'notFound.text' }} eyebrow="404" title={t('notFound.title')} text={t('notFound.text')}>
         <Link to={to('/')} className="btn btn-primary self-start">
           {t('notFound.cta')}
         </Link>

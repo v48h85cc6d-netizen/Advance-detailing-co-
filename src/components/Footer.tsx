@@ -6,6 +6,9 @@ import { SocialIcon, ArrowIcon } from './Icons';
 import { useLang } from '../lib/useLang';
 import { useConsent } from '../lib/consent';
 import { business, fullAddress, maps, social } from '../config/site';
+import { visual } from '../lib/visual';
+
+const ve = visual('src/components/Footer.tsx');
 
 export function Footer() {
   const { t } = useT();
@@ -14,15 +17,15 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden border-t border-line bg-bg-2">
+    <footer {...ve('footer', 'section')} className="relative overflow-hidden border-t border-line bg-bg-2">
       <div className="tri-pattern pointer-events-none absolute inset-0 opacity-30" aria-hidden="true" />
       <div className="container-lux relative pt-20 pb-10 sm:pt-28">
         <div className="grid grid-cols-1 gap-14 lg:grid-cols-[1.3fr_1fr_1fr_1fr]">
           <div className="flex flex-col gap-6">
-            <Link to={to('/')} aria-label={t('a11y.home')} className="block w-40 sm:w-48">
+            <Link {...ve('footer.logo', 'image')} to={to('/')} aria-label={t('a11y.home')} className="block w-40 sm:w-48">
               <Logo variant="full" className="!h-auto w-full" />
             </Link>
-            <p className="max-w-xs text-sm leading-relaxed text-muted">{t('footer.tagline')}</p>
+            <p {...ve('footer.tagline', 'text', { key: 'footer.tagline' })} className="max-w-xs text-sm leading-relaxed text-muted">{t('footer.tagline')}</p>
             <ul className="flex gap-2">
               {social.map((s) => (
                 <li key={s.id}>

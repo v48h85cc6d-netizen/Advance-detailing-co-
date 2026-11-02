@@ -12,6 +12,9 @@ import { getProject } from '../config/projects';
 import { usePageSeo } from '../lib/usePageSeo';
 import { useLang } from '../lib/useLang';
 import { cn } from '../lib/cn';
+import { visual } from '../lib/visual';
+
+const ve = visual('src/pages/Gallery.tsx');
 
 const GALLERY_SLOTS = 16;
 // Editorial bento rhythm for the 16 containers (desktop)
@@ -33,10 +36,10 @@ export default function Gallery() {
 
   return (
     <>
-      <PageHeader eyebrow={t('gallery.eyebrow')} title={t('gallery.title')} text={t('gallery.intro')} />
+      <PageHeader page="gallery" keys={{ eyebrow: 'gallery.eyebrow', title: 'gallery.title', text: 'gallery.intro' }} eyebrow={t('gallery.eyebrow')} title={t('gallery.title')} text={t('gallery.intro')} />
 
       {/* Featured: Lamborghini Aventador SV Roadster — one large container */}
-      <section className="container-lux" aria-labelledby="lambo-title" data-testid="gallery-featured">
+      <section {...ve('gallery.featured', 'section')} className="container-lux" aria-labelledby="lambo-title" data-testid="gallery-featured">
         <Link to={to(`/projects/${lambo.slug}`)} className="group block">
           <ParallaxReveal className="relative aspect-[4/5] rounded-[1.75rem] sm:aspect-[16/9]">
             <div data-parallax className="absolute -inset-y-[10%] inset-x-0">
@@ -60,7 +63,7 @@ export default function Gallery() {
       </section>
 
       {/* 16 independent gallery containers */}
-      <section className="section" aria-labelledby="grid-title">
+      <section {...ve('gallery.grid', 'section')} className="section" aria-labelledby="grid-title">
         <div className="container-lux">
           <h2 id="grid-title" className="eyebrow mb-10">
             {t('gallery.gridTitle')}
@@ -86,7 +89,7 @@ export default function Gallery() {
       </section>
 
       {/* Special project: BMW M135i Engine — 1 of 1, +1000 HP */}
-      <section className="section border-t border-line bg-bg-2" aria-labelledby="m135-title" data-testid="gallery-m135i">
+      <section {...ve('gallery.m135i', 'section')} className="section border-t border-line bg-bg-2" aria-labelledby="m135-title" data-testid="gallery-m135i">
         <div className="container-lux grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <Link to={to(`/projects/${m135.slug}`)} className="group block" tabIndex={-1} aria-hidden="true">
             <ParallaxReveal className="relative aspect-[4/3] rounded-[1.75rem]">

@@ -7,6 +7,9 @@ import { ParallaxReveal, Reveal, SplitHeading } from '../components/Reveal';
 import { folderImages, named } from '../config/images';
 import { gsap, prefersReducedMotion, useGSAP } from '../lib/gsap';
 import { usePageSeo } from '../lib/usePageSeo';
+import { visual } from '../lib/visual';
+
+const ve = visual('src/pages/About.tsx');
 
 export default function About() {
   const { t } = useT();
@@ -28,10 +31,10 @@ export default function About() {
 
   return (
     <>
-      <PageHeader eyebrow={t('about.eyebrow')} title={t('about.title')} text={t('about.intro')} />
+      <PageHeader page="about" keys={{ eyebrow: 'about.eyebrow', title: 'about.title', text: 'about.intro' }} eyebrow={t('about.eyebrow')} title={t('about.title')} text={t('about.intro')} />
 
       {/* Company photo — single empty container until a photo is added to /public/assets/about/ */}
-      <section className="container-lux" aria-label={t('about.photoAlt')}>
+      <section {...ve('about.photo', 'section')} className="container-lux" aria-label={t('about.photoAlt')}>
         <ParallaxReveal className="relative aspect-[4/5] rounded-[1.75rem] sm:aspect-[21/9]">
           <div data-parallax className="absolute -inset-y-[10%] inset-x-0">
             <ImageSlot src={photo} alt={t('about.photoAlt')} folder="about" className="h-full w-full" priority />
@@ -40,7 +43,7 @@ export default function About() {
       </section>
 
       {/* Timeline */}
-      <section className="section" aria-labelledby="timeline-title">
+      <section {...ve('about.timeline', 'section')} className="section" aria-labelledby="timeline-title">
         <div className="container-lux grid grid-cols-1 gap-14 lg:grid-cols-[0.8fr_1.2fr]">
           <div className="lg:sticky lg:top-32 lg:self-start">
             <span className="eyebrow">{t('about.timelineTitle')}</span>
@@ -66,9 +69,9 @@ export default function About() {
       </section>
 
       {/* Team */}
-      <section className="section border-t border-line bg-bg-2" aria-labelledby="team-title">
+      <section {...ve('about.team', 'section')} className="section border-t border-line bg-bg-2" aria-labelledby="team-title">
         <div className="container-lux grid grid-cols-1 gap-12 lg:grid-cols-[0.8fr_1.2fr]">
-          <SplitHeading id="team-title" text={t('about.team.title')} className="h-display-lg" />
+          <SplitHeading id="team-title" text={t('about.team.title')} className="h-display-lg" visual={ve('about.team.title', 'text', { key: 'about.team.title' })} />
           <Reveal>
             <p className="text-[clamp(1.25rem,2.1vw,1.9rem)] font-light leading-[1.5] tracking-tight text-fg">{t('about.team.text')}</p>
             <ul className="mt-12 flex flex-wrap gap-3">
@@ -83,13 +86,13 @@ export default function About() {
       </section>
 
       {/* Vision & mission */}
-      <section className="section" aria-labelledby="vm-title">
+      <section {...ve('about.vision-mission', 'section')} className="section" aria-labelledby="vm-title">
         <h2 id="vm-title" className="sr-only">
           {t('about.vision.title')} · {t('about.mission.title')}
         </h2>
         <Reveal className="container-lux grid grid-cols-1 gap-6 md:grid-cols-2" stagger={0.15}>
           {(['vision', 'mission'] as const).map((k, i) => (
-            <article key={k} data-reveal className="card-lux noise flex min-h-[22rem] flex-col justify-between gap-12 p-8 sm:p-12">
+            <article key={k} {...ve(`about.${k}`, 'card')} data-reveal className="card-lux noise flex min-h-[22rem] flex-col justify-between gap-12 p-8 sm:p-12">
               <span className="text-silver text-6xl font-light">{String(i + 1).padStart(2, '0')}</span>
               <div>
                 <h3 className="text-3xl font-semibold tracking-tight sm:text-4xl">{t(`about.${k}.title`)}</h3>
@@ -100,7 +103,7 @@ export default function About() {
         </Reveal>
       </section>
 
-      <CtaBand title={t('home.cta.title')} text={t('home.cta.text')} />
+      <CtaBand title={t('home.cta.title')} text={t('home.cta.text')} keys={{ title: 'home.cta.title', text: 'home.cta.text' }} />
     </>
   );
 }
