@@ -14,14 +14,12 @@ export interface Project {
   /** number of photo slots on the project page */
   photoSlots: number;
   featured?: boolean;
-  /** show this many photos as a clickable gallery inside the homepage card (instead of one cover image) */
-  cardGallery?: number;
   badge?: string;
 }
 
 export const projects: Project[] = [
-  { slug: 'audi-rs3', folder: 'audi-rs3', photoSlots: 9, featured: true, cardGallery: 9 },
-  { slug: 'ferrari-488-pista', folder: 'ferrari-488-pista', photoSlots: 8, featured: true },
+  { slug: 'audi-rs3', folder: 'audi-rs3', photoSlots: 9, featured: true },
+  { slug: 'ferrari-488-pista', folder: 'ferrari-488-pista', photoSlots: 14, featured: true },
   { slug: 'bmw-740d', folder: 'bmw-740d', photoSlots: 8, featured: true },
   { slug: 'lamborghini-aventador', folder: 'lamborghini-aventador', photoSlots: 12, badge: '1 / 500' },
   { slug: 'bmw-m135i', folder: 'bmw-m135i', photoSlots: 8, badge: '1 / 1' },

@@ -227,9 +227,10 @@ async function ctxWith(browser, opts = {}, { intro = false, consent = true, them
       const txt = (await card.innerText()).toLowerCase();
       [veh, color, svc] = [veh, color, svc].map((x) => x.toLowerCase());
       const empty = await card.locator('[data-filled=false]').count();
-      const filled = await card.locator('[data-filled=true]').count();
-      const media = slug === 'audi-rs3' ? filled === 9 && empty === 0 : empty === 1 && filled === 0; // Audi RS3 card holds its 9-photo gallery
-      ok(`Home card ${slug}: content + ${slug === 'audi-rs3' ? '9-photo gallery' : 'empty image container'}`, txt.includes(veh) && txt.includes(color) && txt.includes(svc) && /shiko më shumë/i.test(txt) && media);
+      const imgs = await card.locator('img').evaluateAll((els) => els.map((e) => e.getAttribute('src')));
+      // Audi RS3 + Ferrari: exactly one image = their own Photo 1; BMW: still an empty container
+      const media = slug === 'bmw-740d' ? empty === 1 && imgs.length === 0 : empty === 0 && imgs.length === 1 && imgs[0] === `/assets/${slug}/01.webp`;
+      ok(`Home card ${slug}: content + ${slug === 'bmw-740d' ? 'empty image container' : 'Photo 1 only'}`, txt.includes(veh) && txt.includes(color) && txt.includes(svc) && /shiko më shumë/i.test(txt) && media, imgs.join(','));
       await card.scrollIntoViewIfNeeded();
       await p.getByTestId(`project-link-${slug}`).click();
       await p.waitForURL(BASE + `/projects/${slug}`);
@@ -237,35 +238,31 @@ async function ctxWith(browser, opts = {}, { intro = false, consent = true, them
       const folders = await p.locator(`[data-testid=project-${slug}] [data-slot]`).evaluateAll((els) => [...new Set(els.map((e) => e.getAttribute('data-slot')))]);
       ok(`Project ${slug}: opens correct project, all photos from its own folder`, folders.length === 1 && folders[0] === slug, folders.join(','));
     }
-    // ---- Audi RS3: 9-photo gallery inside its homepage card
-    await p.goto(BASE + '/', { waitUntil: 'networkidle' });
-    const rs3 = p.getByTestId('card-gallery-audi-rs3');
-    await rs3.scrollIntoViewIfNeeded();
-    await p.waitForTimeout(1500);
-    const tiles = rs3.getByTestId('card-gallery-tile');
-    const loadedImgs = await rs3.locator('img').evaluateAll((imgs) => imgs.filter((i) => i.complete && i.naturalWidth > 0).length);
-    ok('Audi RS3 card: exactly 9 photos, all loaded, grouped in the card', (await tiles.count()) === 9 && loadedImgs === 9 && (await p.locator('[data-testid=card-gallery-tile]').count()) === 9);
-    ok('Other featured cards unchanged (no gallery)', (await p.locator('[data-testid^="card-gallery-"]:not([data-testid="card-gallery-tile"])').count()) === 1 && (await p.locator('[data-testid="project-card-ferrari-488-pista"] [data-testid="card-gallery-tile"], [data-testid="project-card-bmw-740d"] [data-testid="card-gallery-tile"]').count()) === 0);
-    await tiles.nth(0).click();
-    const rlb = p.getByTestId('lightbox');
-    await rlb.waitFor();
-    const rc = () => p.getByTestId('lightbox-counter').textContent();
-    ok('Audi RS3 lightbox opens on the clicked photo (1/9)', (await rc()).trim() === '01 / 09' && (await rlb.locator('img').first().getAttribute('src')).includes('/assets/audi-rs3/01.'));
-    await p.getByTestId('lightbox-next').click();
-    await p.waitForTimeout(600);
-    const second = (await rc()).trim();
-    await p.getByTestId('lightbox-prev').click();
-    await p.waitForTimeout(600);
-    const back = (await rc()).trim();
-    await p.keyboard.press('ArrowLeft'); // from photo 1, previous wraps to the last photo
-    await p.waitForTimeout(600);
-    const wrapped = (await rc()).trim();
-    ok('Audi RS3 lightbox next / previous / wrap-around', second === '02 / 09' && back === '01 / 09' && wrapped === '09 / 09', `${second} → ${back} → ${wrapped}`);
-    await p.getByTestId('lightbox-close').click();
-    await rlb.waitFor({ state: 'detached' });
-    ok('Audi RS3 lightbox close button', true);
-    await p.goto(BASE + '/projects/audi-rs3', { waitUntil: 'networkidle' });
-    ok('Audi RS3 project page shows its own photos', (await p.locator('[data-testid=project-slot] [data-filled=true]').count()) === 9);
+    // ---- Audi RS3 + Ferrari: project intro = Photo 1, galleries with every photo in order
+    for (const [slug, n] of [['audi-rs3', 9], ['ferrari-488-pista', 14]]) {
+      await p.goto(BASE + `/projects/${slug}`, { waitUntil: 'networkidle' });
+      const pad = (i) => String(i).padStart(2, '0');
+      const hero = await p.locator(`[data-testid=project-${slug}] img`).first().getAttribute('src');
+      ok(`${slug}: project intro image = Photo 1 (same file as the card)`, hero === `/assets/${slug}/01.webp`, hero);
+      const slotImgs = await p.locator('[data-testid=project-slot] img').evaluateAll((els) => els.map((e) => e.getAttribute('src')));
+      const expected = Array.from({ length: n }, (_, i) => `/assets/${slug}/${pad(i + 1)}.webp`);
+      ok(`${slug}: gallery has exactly ${n} photos, original order, own folder only`, (await p.locator('[data-testid=project-slot]').count()) === n && JSON.stringify(slotImgs) === JSON.stringify(expected));
+      await p.locator('[data-testid=project-slot] button').first().click();
+      const lbx = p.getByTestId('lightbox');
+      await lbx.waitFor();
+      const seen = [];
+      for (let i = 0; i < n; i++) {
+        await p.waitForTimeout(650);
+        seen.push([(await p.getByTestId('lightbox-counter').textContent()).trim(), await lbx.locator('img').last().getAttribute('src')]);
+        await p.keyboard.press('ArrowRight');
+      }
+      await p.waitForTimeout(650);
+      const wrapped = (await p.getByTestId('lightbox-counter').textContent()).trim();
+      const allOk = seen.every(([c, src], i) => c === `${pad(i + 1)} / ${pad(n)}` && src === expected[i]);
+      ok(`${slug}: lightbox navigates through all ${n} photos in order and wraps`, allOk && wrapped === `01 / ${pad(n)}`, `${seen.length} viewed, wrap → ${wrapped}`);
+      await p.keyboard.press('Escape');
+      await lbx.waitFor({ state: 'detached' });
+    }
 
     await p.goto(BASE + '/gallery', { waitUntil: 'networkidle' });
     ok('Gallery: Lamborghini featured large container', (await p.getByTestId('gallery-featured').innerText()).includes('Lamborghini Aventador SV Roadster') && (await p.locator('[data-testid=gallery-featured] [data-slot=lamborghini-aventador]').count()) === 1);

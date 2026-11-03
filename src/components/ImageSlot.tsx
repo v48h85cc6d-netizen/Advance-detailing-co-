@@ -20,7 +20,6 @@ export function ImageSlot({
   sizes,
   priority,
   label,
-  thumb,
 }: {
   src?: string;
   alt: string;
@@ -31,12 +30,9 @@ export function ImageSlot({
   sizes?: string;
   priority?: boolean;
   label?: string;
-  /** lighter image to display (falls back to `src` automatically if it is missing) */
-  thumb?: string;
 }) {
   const { t } = useT();
   const [failed, setFailed] = useState(false);
-  const [useThumb, setUseThumb] = useState(Boolean(thumb));
   const [loaded, setLoaded] = useState(false);
   const hasImage = Boolean(src) && !failed;
 
@@ -44,14 +40,14 @@ export function ImageSlot({
     <div {...ve(`image.${folder ?? 'misc'}.${index !== undefined ? String(index).padStart(2, '0') : 'cover'}`, 'image')} className={cn(/\b(absolute|fixed)\b/.test(className ?? '') ? '' : 'relative', 'overflow-hidden', className)} data-slot={folder} data-filled={hasImage ? 'true' : 'false'}>
       {hasImage ? (
         <img
-          src={useThumb && thumb ? thumb : src}
+          src={src}
           alt={alt}
           sizes={sizes}
           loading={priority ? 'eager' : 'lazy'}
           fetchPriority={priority ? 'high' : 'auto'}
           decoding="async"
           onLoad={() => setLoaded(true)}
-          onError={() => (useThumb ? setUseThumb(false) : setFailed(true))}
+          onError={() => setFailed(true)}
           className={cn(
             'h-full w-full object-cover transition-[opacity,transform,filter] duration-[1.2s] ease-[var(--ease-out-expo)]',
             loaded ? 'scale-100 opacity-100 blur-0' : 'scale-[1.04] opacity-0 blur-md',

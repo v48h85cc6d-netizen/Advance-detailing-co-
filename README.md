@@ -86,12 +86,7 @@ Every empty container on the website reads from **its own folder** — photograp
 | Homepage hero background (optional, shown subtly behind the 3D logo) | `homepage/` | `cover.jpg` |
 | Certification logos (optional, otherwise elegant text) | `certifications/` | `carpro.png`, `nasiol.png`, `gtechniq.png` |
 
-Change the number of photo slots per project in `src/config/projects.ts` (`photoSlots`).
-
-**Audi RS3 card gallery:** the Audi RS3 card on the homepage shows a 3×3 grid of its first 9 photos
-(`public/assets/audi-rs3/01–09`) with a full-screen lightbox. `npm run images` also creates the small grid thumbnails
-in `public/assets/audi-rs3/thumbs/` (if a thumbnail is missing, the full photo is used automatically). To show a photo
-grid in another card, set `cardGallery: 9` on that project in `src/config/projects.ts`. Supported formats: `.jpg .jpeg .png .webp .avif`.
+Change the number of photo slots per project in `src/config/projects.ts` (`photoSlots`). Supported formats: `.jpg .jpeg .png .webp .avif`.
 
 Until a photo is added, a branded placeholder ("Fotografia së shpejti") is shown — never a stock or AI photo.
 
