@@ -11,5 +11,5 @@
     { "key": "cookies", "path": "/cookies", "priority": 0.3 },
     { "key": "terms", "path": "/terms", "priority": 0.3 }
   ],
-  "projects": ["audi-rs3", "ferrari-488-pista", "bmw-740d", "lamborghini-aventador", "bmw-m135i"]
+  "projects": ["audi-rs3", "ferrari-488-pista", "bmw-740d", "audi-rs6", "bmw-m135i"]
 }

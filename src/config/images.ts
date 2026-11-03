@@ -13,7 +13,7 @@ export type AssetFolder =
   | 'audi-rs3'
   | 'ferrari-488-pista'
   | 'bmw-740d'
-  | 'lamborghini-aventador'
+  | 'audi-rs6'
   | 'bmw-m135i'
   | 'gallery'
   | 'certifications'

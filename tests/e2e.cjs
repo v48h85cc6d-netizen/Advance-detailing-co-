@@ -9,7 +9,7 @@ const results = [];
 const ok = (name, cond, info = '') => { results.push({ name, pass: !!cond, info }); console.log(`${cond ? 'PASS' : 'FAIL'}  ${name}${info ? '  — ' + info : ''}`); };
 const LANGS = ['', '/en', '/de'];
 const PAGES = ['/', '/services', '/about', '/gallery', '/contact', '/privacy', '/cookies', '/terms'];
-const PROJECTS = ['audi-rs3', 'ferrari-488-pista', 'bmw-740d', 'lamborghini-aventador', 'bmw-m135i'];
+const PROJECTS = ['audi-rs3', 'ferrari-488-pista', 'bmw-740d', 'audi-rs6', 'bmw-m135i'];
 const ALL = LANGS.flatMap((l) => [...PAGES.map((p) => (l + p).replace(/(.)\/$/, '$1') || '/'), ...PROJECTS.map((s) => `${l}/projects/${s}`)]);
 const GL = ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader'];
 
@@ -239,33 +239,33 @@ async function ctxWith(browser, opts = {}, { intro = false, consent = true, them
       ok(`Project ${slug}: opens correct project, all photos from its own folder`, folders.length === 1 && folders[0] === slug, folders.join(','));
     }
     // ---- Audi RS3 + Ferrari: project intro = Photo 1, galleries with every photo in order
-    for (const [slug, n] of [['audi-rs3', 9], ['ferrari-488-pista', 14], ['bmw-740d', 8]]) {
+    for (const [slug, n, slotsN = n] of [['audi-rs3', 9], ['ferrari-488-pista', 14], ['bmw-740d', 8], ['audi-rs6', 6, 7]]) {
       await p.goto(BASE + `/projects/${slug}`, { waitUntil: 'networkidle' });
       const pad = (i) => String(i).padStart(2, '0');
       const hero = await p.locator(`[data-testid=project-${slug}] img`).first().getAttribute('src');
       ok(`${slug}: project intro image = Photo 1 (same file as the card)`, hero === `/assets/${slug}/01.webp`, hero);
       const slotImgs = await p.locator('[data-testid=project-slot] img').evaluateAll((els) => els.map((e) => e.getAttribute('src')));
       const expected = Array.from({ length: n }, (_, i) => `/assets/${slug}/${pad(i + 1)}.webp`);
-      ok(`${slug}: gallery has exactly ${n} photos, original order, own folder only`, (await p.locator('[data-testid=project-slot]').count()) === n && JSON.stringify(slotImgs) === JSON.stringify(expected));
+      ok(`${slug}: gallery has exactly ${n} photos, original order, own folder only`, (await p.locator('[data-testid=project-slot]').count()) === slotsN && JSON.stringify(slotImgs) === JSON.stringify(expected));
       await p.locator('[data-testid=project-slot] button').first().click();
       const lbx = p.getByTestId('lightbox');
       await lbx.waitFor();
       const seen = [];
-      for (let i = 0; i < n; i++) {
+      for (let i = 0; i < slotsN; i++) {
         await p.waitForTimeout(650);
-        seen.push([(await p.getByTestId('lightbox-counter').textContent()).trim(), await lbx.locator('img').last().getAttribute('src')]);
+        seen.push([(await p.getByTestId('lightbox-counter').textContent()).trim(), (await lbx.locator('img').evaluateAll((e) => e.map((i) => i.getAttribute('src')))).pop() ?? null]);
         await p.keyboard.press('ArrowRight');
       }
       await p.waitForTimeout(650);
       const wrapped = (await p.getByTestId('lightbox-counter').textContent()).trim();
-      const allOk = seen.every(([c, src], i) => c === `${pad(i + 1)} / ${pad(n)}` && src === expected[i]);
-      ok(`${slug}: lightbox navigates through all ${n} photos in order and wraps`, allOk && wrapped === `01 / ${pad(n)}`, `${seen.length} viewed, wrap → ${wrapped}`);
+      const allOk = seen.every(([c, src], i) => c === `${pad(i + 1)} / ${pad(slotsN)}` && (i >= n || src === expected[i]));
+      ok(`${slug}: lightbox navigates through all ${slotsN} slots (${n} photos) in order and wraps`, allOk && wrapped === `01 / ${pad(slotsN)}`, `${seen.length} viewed, wrap → ${wrapped}`);
       await p.keyboard.press('Escape');
       await lbx.waitFor({ state: 'detached' });
     }
 
     await p.goto(BASE + '/gallery', { waitUntil: 'networkidle' });
-    ok('Gallery: Lamborghini featured large container', (await p.getByTestId('gallery-featured').innerText()).includes('Lamborghini Aventador SV Roadster') && (await p.locator('[data-testid=gallery-featured] [data-slot=lamborghini-aventador]').count()) === 1);
+    ok('Gallery: Audi RS6 Performance featured large container', (await p.getByTestId('gallery-featured').innerText()).includes('Audi RS6 Performance') && (await p.locator('[data-testid=gallery-featured] [data-slot=audi-rs6]').count()) === 1);
     const slots = p.getByTestId('gallery-slot');
     ok('Gallery: 16 independent placeholders', (await slots.count()) === 16 && (await p.locator('[data-testid=gallery-slot] [data-slot=gallery]').count()) === 16);
     const m135 = await p.getByTestId('gallery-m135i').innerText();
@@ -292,8 +292,11 @@ async function ctxWith(browser, opts = {}, { intro = false, consent = true, them
     await p.getByTestId('m135-link').click();
     await p.waitForURL(BASE + '/projects/bmw-m135i');
     ok('Gallery: M135i opens its own project', (await p.getByTestId('project-vehicle').textContent()).includes('+1000 HP'));
-    await p.goto(BASE + '/projects/lamborghini-aventador', { waitUntil: 'networkidle' });
-    ok('Lamborghini project page (1 / 500)', (await p.locator('h1').innerText()).includes('Lamborghini') && (await p.locator('[data-testid=project-slot]').count()) === 12);
+    await p.goto(BASE + '/projects/audi-rs6', { waitUntil: 'networkidle' });
+    ok('Audi RS6 Performance project page', (await p.locator('h1').innerText()).includes('Audi RS6 Performance') && (await p.locator('[data-testid=project-slot]').count()) === 7);
+    await p.goto(BASE + '/', { waitUntil: 'networkidle' });
+    const spot = await p.getByTestId('spotlight-link').innerText();
+    ok('Home spotlight is the Audi RS6 card (no Lamborghini, no 1/500)', spot.includes('Audi RS6 Performance — full XPEL') && spot.includes('Ultimate Fusion Gloss PPF') && !/lamborghini|500/i.test(spot) && (await p.getByTestId('spotlight-link').getAttribute('href')) === '/projects/audi-rs6' && (await p.locator('[data-testid=spotlight-link] img').evaluateAll((e) => e.map((i) => i.getAttribute('src')))).join() === '/assets/audi-rs6/01.webp');
     await p.goto(BASE + '/projects/does-not-exist', { waitUntil: 'networkidle' });
     ok('Unknown project → 404 page (noindex)', (await p.locator('h1').innerText()).includes('nuk u gjet') && (await p.locator('meta[name=robots]').getAttribute('content')).includes('noindex'));
     await ctx.close();

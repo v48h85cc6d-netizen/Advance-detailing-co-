@@ -21,7 +21,7 @@ export const projects: Project[] = [
   { slug: 'audi-rs3', folder: 'audi-rs3', photoSlots: 9, featured: true },
   { slug: 'ferrari-488-pista', folder: 'ferrari-488-pista', photoSlots: 14, featured: true },
   { slug: 'bmw-740d', folder: 'bmw-740d', photoSlots: 8, featured: true },
-  { slug: 'lamborghini-aventador', folder: 'lamborghini-aventador', photoSlots: 12, badge: '1 / 500' },
+  { slug: 'audi-rs6', folder: 'audi-rs6', photoSlots: 7 },
   { slug: 'bmw-m135i', folder: 'bmw-m135i', photoSlots: 8, badge: '1 / 1' },
 ];
 

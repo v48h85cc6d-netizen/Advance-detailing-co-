@@ -23,7 +23,7 @@ export default function Home({ ready }: { ready: boolean }) {
   const { t } = useT();
   const { to } = useLang();
   usePageSeo('home');
-  const lambo = getProject('lamborghini-aventador')!;
+  const lambo = getProject('audi-rs6')!;
   const aboutPhoto = named('about', 'company') ?? folderImages('about')[0];
 
   return (
@@ -50,7 +50,7 @@ export default function Home({ ready }: { ready: boolean }) {
       <StudioSection />
       <CertCarousel />
 
-      {/* Lamborghini spotlight */}
+      {/* Audi RS6 Performance spotlight */}
       <section {...ve('home.spotlight', 'section')} className="section pt-0" aria-labelledby="spotlight-title">
         <div className="container-lux">
           <Link to={to(`/projects/${lambo.slug}`)} className="group block" data-testid="spotlight-link">
@@ -58,7 +58,7 @@ export default function Home({ ready }: { ready: boolean }) {
               <div data-parallax className="absolute -inset-y-[10%] inset-x-0">
                 <ImageSlot
                   src={coverImage(lambo.folder)}
-                  alt={t('projects.lamborghini-aventador.vehicle')}
+                  alt={t('projects.audi-rs6.vehicle')}
                   folder={lambo.folder}
                   className="h-full w-full transition-transform duration-[1.6s] ease-[var(--ease-out-expo)] group-hover:scale-[1.04]"
                 />
@@ -66,11 +66,11 @@ export default function Home({ ready }: { ready: boolean }) {
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 flex flex-col gap-5 p-6 text-white sm:p-12 lg:flex-row lg:items-end lg:justify-between">
                 <div className="flex flex-col gap-4">
-                  <span className="text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-white/70">{t('home.spotlight.eyebrow')} · 1 / 500</span>
+                  <span className="text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-white/70">{t('home.spotlight.eyebrow')}</span>
                   <h2 id="spotlight-title" className="display h-display-md max-w-[20ch]">
-                    {t('projects.lamborghini-aventador.title')}
+                    {t('projects.audi-rs6.title')}
                   </h2>
-                  <p className="serif-accent text-xl text-white/80 sm:text-2xl">{t('projects.lamborghini-aventador.service')}</p>
+                  <p className="serif-accent text-xl text-white/80 sm:text-2xl">{t('projects.audi-rs6.service')}</p>
                 </div>
                 <span className="btn self-start border border-white/40 text-white transition-colors group-hover:bg-white group-hover:text-black">
                   {t('home.spotlight.cta')} <ArrowIcon width={16} height={16} />

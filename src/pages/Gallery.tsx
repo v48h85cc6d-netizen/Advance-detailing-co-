@@ -26,7 +26,7 @@ export default function Gallery() {
   const { to } = useLang();
   usePageSeo('gallery');
   const [open, setOpen] = useState<number | null>(null);
-  const lambo = getProject('lamborghini-aventador')!;
+  const lambo = getProject('audi-rs6')!;
   const m135 = getProject('bmw-m135i')!;
 
   const items: LightboxItem[] = useMemo(
@@ -38,21 +38,21 @@ export default function Gallery() {
     <>
       <PageHeader page="gallery" keys={{ eyebrow: 'gallery.eyebrow', title: 'gallery.title', text: 'gallery.intro' }} eyebrow={t('gallery.eyebrow')} title={t('gallery.title')} text={t('gallery.intro')} />
 
-      {/* Featured: Lamborghini Aventador SV Roadster — one large container */}
+      {/* Featured: Audi RS6 Performance — one large container */}
       <section {...ve('gallery.featured', 'section')} className="container-lux" aria-labelledby="lambo-title" data-testid="gallery-featured">
         <Link to={to(`/projects/${lambo.slug}`)} className="group block">
           <ParallaxReveal className="relative aspect-[4/5] rounded-[1.75rem] sm:aspect-[16/9]">
             <div data-parallax className="absolute -inset-y-[10%] inset-x-0">
-              <ImageSlot src={coverImage(lambo.folder)} alt={t('projects.lamborghini-aventador.vehicle')} folder={lambo.folder} className="h-full w-full transition-transform duration-[1.6s] group-hover:scale-[1.04]" priority />
+              <ImageSlot src={coverImage(lambo.folder)} alt={t('projects.audi-rs6.vehicle')} folder={lambo.folder} className="h-full w-full transition-transform duration-[1.6s] group-hover:scale-[1.04]" priority />
             </div>
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent" />
             <div className="absolute inset-x-0 bottom-0 flex flex-col gap-4 p-6 text-white sm:p-12 lg:flex-row lg:items-end lg:justify-between">
               <div className="flex flex-col gap-3">
                 <span className="text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-white/70">{t('gallery.featuredLabel')}</span>
                 <h2 id="lambo-title" className="display h-display-md max-w-[22ch]">
-                  {t('projects.lamborghini-aventador.title')}
+                  {t('projects.audi-rs6.title')}
                 </h2>
-                <p className="serif-accent text-xl text-white/85 sm:text-2xl">1 of 500 · {t('projects.lamborghini-aventador.service')}</p>
+                <p className="serif-accent text-xl text-white/85 sm:text-2xl">{t('projects.audi-rs6.service')}</p>
               </div>
               <span className="btn self-start border border-white/40 text-white transition-colors group-hover:bg-white group-hover:text-black">
                 {t('home.spotlight.cta')} <ArrowIcon width={16} height={16} />

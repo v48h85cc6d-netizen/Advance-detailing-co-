@@ -18,7 +18,7 @@
       },
       "gallery": {
         "title": "Galeria",
-        "description": "Galeria e projekteve tona: Lamborghini Aventador SV Roadster, BMW M135i 1 of 1 dhe shumë automjete të tjera të trajtuara në studion tonë."
+        "description": "Galeria e projekteve tona: Audi RS6 Performance (full XPEL), BMW M135i 1 of 1 dhe shumë automjete të tjera të trajtuara në studion tonë."
       },
       "contact": {
         "title": "Kontakt",
@@ -184,12 +184,12 @@
       "service": "Polirim & Ceramic Coating",
       "description": "Polirim i bojës dhe veshje keramike për BMW G70 740d xDrive 2023 — mbrojtje afatgjatë dhe shkëlqim i thellë."
     },
-    "lamborghini-aventador": {
-      "title": "Lamborghini Aventador SV Roadster",
-      "vehicle": "Lamborghini Aventador SV Roadster — 1 of 500",
+    "audi-rs6": {
+      "title": "Audi RS6 Performance — full XPEL",
+      "vehicle": "Audi RS6 Performance — full XPEL",
       "color": "",
-      "service": "Full Package",
-      "description": "Një nga vetëm 500 njësitë e prodhuara. Lamborghini Aventador SV Roadster, i trajtuar me paketën tonë të plotë."
+      "service": "Ultimate Fusion Gloss PPF",
+      "description": "Audi RS6 Performance me mbrojtje të plotë XPEL Ultimate Fusion Gloss PPF — folje transparente mbi gjithë karrocerinë."
     },
     "bmw-m135i": {
       "title": "BMW M135i Engine — 1 of 1",

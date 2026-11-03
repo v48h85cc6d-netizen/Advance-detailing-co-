@@ -36,7 +36,7 @@ public/
     audi-rs3/              Audi RS3 Sportback project photos
     ferrari-488-pista/     Ferrari 488 Pista project photos
     bmw-740d/              BMW G70 740d xDrive project photos
-    lamborghini-aventador/ Lamborghini Aventador SV Roadster photos
+    audi-rs6/              Audi RS6 Performance (full XPEL) photos
     bmw-m135i/             BMW M135i engine photos
     gallery/               16 general gallery photos
     certifications/        (optional) carpro.*, nasiol.*, gtechniq.* logos
@@ -79,7 +79,7 @@ Every empty container on the website reads from **its own folder** — photograp
 | Homepage card 1 + project page — Audi RS3 Sportback (Goodwood Green) | `audi-rs3/` | cover + 8 |
 | Homepage card 2 + project page — Ferrari 488 Pista (Rosso Scuderia) | `ferrari-488-pista/` | cover + 8 |
 | Homepage card 3 + project page — BMW G70 740d xDrive 2023 | `bmw-740d/` | cover + 8 |
-| Gallery large container + project page — Lamborghini Aventador SV Roadster | `lamborghini-aventador/` | cover + 12 |
+| Home spotlight + Gallery large container + project page — Audi RS6 Performance | `audi-rs6/` | 7 |
 | Gallery special project + project page — BMW M135i Engine 1 of 1 | `bmw-m135i/` | cover + 8 |
 | Gallery — 16 containers | `gallery/` | 16 (`01`–`16`) |
 | About Us — company photo | `about/` | `company.jpg` |
