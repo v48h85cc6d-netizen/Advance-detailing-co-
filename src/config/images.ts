@@ -14,7 +14,7 @@ export type AssetFolder =
   | 'ferrari-488-pista'
   | 'bmw-740d'
   | 'audi-rs6'
-  | 'bmw-m135i'
+  | 'mercedes-s580-maybach'
   | 'gallery'
   | 'certifications'
   | 'about';

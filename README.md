@@ -37,7 +37,7 @@ public/
     ferrari-488-pista/     Ferrari 488 Pista project photos
     bmw-740d/              BMW G70 740d xDrive project photos
     audi-rs6/              Audi RS6 Performance (full XPEL) photos
-    bmw-m135i/             BMW M135i engine photos
+    mercedes-s580-maybach/ Mercedes S580 Maybach photos
     gallery/               16 general gallery photos
     certifications/        (optional) carpro.*, nasiol.*, gtechniq.* logos
     about/                 company photo (company.jpg)
@@ -80,7 +80,7 @@ Every empty container on the website reads from **its own folder** — photograp
 | Homepage card 2 + project page — Ferrari 488 Pista (Rosso Scuderia) | `ferrari-488-pista/` | cover + 8 |
 | Homepage card 3 + project page — BMW G70 740d xDrive 2023 | `bmw-740d/` | cover + 8 |
 | Home spotlight + Gallery large container + project page — Audi RS6 Performance | `audi-rs6/` | 7 |
-| Gallery special project + project page — BMW M135i Engine 1 of 1 | `bmw-m135i/` | cover + 8 |
+| Gallery special project + project page — Mercedes S580 Maybach | `mercedes-s580-maybach/` | 8 |
 | Gallery — 16 containers | `gallery/` | 16 (`01`–`16`) |
 | About Us — company photo | `about/` | `company.jpg` |
 | Homepage hero background (optional, shown subtly behind the 3D logo) | `homepage/` | `cover.jpg` |
@@ -224,7 +224,7 @@ node tests/e2e.cjs http://localhost:4173
 The suite (Playwright/Chromium) checks: intro video playback + Skip Intro, desktop & mobile navigation, dark/light mode,
 Sun/Moon animation, persistence without flash, all 3 languages on all 39 pages (no missing keys), 16 services,
 certification carousel (auto, arrows, pause-on-hover), the 3 homepage projects opening their own galleries, Lamborghini
-& BMW M135i projects, 16 gallery placeholders, lightbox, contact form validation & honest error handling, social links,
+& Mercedes S580 Maybach projects, 16 gallery placeholders, lightbox, contact form validation & honest error handling, social links,
 cookie consent & GDPR gating, legal pages, no horizontal scrolling from 360 px to 1920 px, console errors, broken links,
 and reduced-motion support.
 

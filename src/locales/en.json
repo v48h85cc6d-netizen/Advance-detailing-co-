@@ -18,7 +18,7 @@
       },
       "gallery": {
         "title": "Gallery",
-        "description": "Our project gallery: Audi RS6 Performance (full XPEL), the one-of-one BMW M135i and many more vehicles treated in our studio."
+        "description": "Our project gallery: Audi RS6 Performance (full XPEL), Mercedes S580 Maybach and many more vehicles treated in our studio."
       },
       "contact": {
         "title": "Contact",
@@ -191,12 +191,12 @@
       "service": "Ultimate Fusion Gloss PPF",
       "description": "Audi RS6 Performance with full XPEL Ultimate Fusion Gloss PPF — transparent protection film over the entire body."
     },
-    "bmw-m135i": {
-      "title": "BMW M135i Engine — 1 of 1",
-      "vehicle": "BMW M135i — 1 of 1, +1000 HP",
+    "mercedes-s580-maybach": {
+      "title": "Mercedes S580 Maybach",
+      "vehicle": "Mercedes S580 Maybach",
       "color": "",
       "service": "General Cleaning",
-      "description": "The engine of a unique BMW M135i producing more than 1000 horsepower — cleaned and treated with the care it deserves."
+      "description": "A Mercedes S580 Maybach, treated in our studio in Prishtina."
     }
   },
   "services": {

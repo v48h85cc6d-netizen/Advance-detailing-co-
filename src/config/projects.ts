@@ -22,7 +22,7 @@ export const projects: Project[] = [
   { slug: 'ferrari-488-pista', folder: 'ferrari-488-pista', photoSlots: 14, featured: true },
   { slug: 'bmw-740d', folder: 'bmw-740d', photoSlots: 8, featured: true },
   { slug: 'audi-rs6', folder: 'audi-rs6', photoSlots: 7 },
-  { slug: 'bmw-m135i', folder: 'bmw-m135i', photoSlots: 8, badge: '1 / 1' },
+  { slug: 'mercedes-s580-maybach', folder: 'mercedes-s580-maybach', photoSlots: 8 },
 ];
 
 export const featuredProjects = projects.filter((p) => p.featured);

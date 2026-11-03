@@ -9,7 +9,7 @@ const results = [];
 const ok = (name, cond, info = '') => { results.push({ name, pass: !!cond, info }); console.log(`${cond ? 'PASS' : 'FAIL'}  ${name}${info ? '  — ' + info : ''}`); };
 const LANGS = ['', '/en', '/de'];
 const PAGES = ['/', '/services', '/about', '/gallery', '/contact', '/privacy', '/cookies', '/terms'];
-const PROJECTS = ['audi-rs3', 'ferrari-488-pista', 'bmw-740d', 'audi-rs6', 'bmw-m135i'];
+const PROJECTS = ['audi-rs3', 'ferrari-488-pista', 'bmw-740d', 'audi-rs6', 'mercedes-s580-maybach'];
 const ALL = LANGS.flatMap((l) => [...PAGES.map((p) => (l + p).replace(/(.)\/$/, '$1') || '/'), ...PROJECTS.map((s) => `${l}/projects/${s}`)]);
 const GL = ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader'];
 
@@ -239,7 +239,7 @@ async function ctxWith(browser, opts = {}, { intro = false, consent = true, them
       ok(`Project ${slug}: opens correct project, all photos from its own folder`, folders.length === 1 && folders[0] === slug, folders.join(','));
     }
     // ---- Audi RS3 + Ferrari: project intro = Photo 1, galleries with every photo in order
-    for (const [slug, n, slotsN = n] of [['audi-rs3', 9], ['ferrari-488-pista', 14], ['bmw-740d', 8], ['audi-rs6', 6, 7]]) {
+    for (const [slug, n, slotsN = n] of [['audi-rs3', 9], ['ferrari-488-pista', 14], ['bmw-740d', 8], ['audi-rs6', 6, 7], ['mercedes-s580-maybach', 8]]) {
       await p.goto(BASE + `/projects/${slug}`, { waitUntil: 'networkidle' });
       const pad = (i) => String(i).padStart(2, '0');
       const hero = await p.locator(`[data-testid=project-${slug}] img`).first().getAttribute('src');
@@ -269,7 +269,7 @@ async function ctxWith(browser, opts = {}, { intro = false, consent = true, them
     const slots = p.getByTestId('gallery-slot');
     ok('Gallery: 16 independent placeholders', (await slots.count()) === 16 && (await p.locator('[data-testid=gallery-slot] [data-slot=gallery]').count()) === 16);
     const m135 = await p.getByTestId('gallery-m135i').innerText();
-    ok('Gallery: BMW M135i special project (1 of 1, +1000 HP, Pastrim)', /BMW M135i/.test(m135) && /1000 HP/.test(m135) && /Pastrim i Përgjithshëm/.test(m135) && (await p.locator('[data-testid=gallery-m135i] [data-slot=bmw-m135i]').count()) === 1);
+    ok('Gallery: Mercedes S580 Maybach special project (Photo 1, no 1/1 badge)', /Mercedes S580 Maybach/.test(m135) && !/M135i|1000|1 \/ 1/.test(m135) && (await p.locator('[data-testid=gallery-m135i] img').evaluateAll((e) => e.map((i) => i.getAttribute('src')))).join() === '/assets/mercedes-s580-maybach/01.webp');
     // lightbox
     await slots.nth(2).scrollIntoViewIfNeeded();
     await slots.nth(2).locator('button').click();
@@ -290,8 +290,8 @@ async function ctxWith(browser, opts = {}, { intro = false, consent = true, them
     await lb.waitFor({ state: 'detached' });
     ok('Lightbox: Escape closes', true);
     await p.getByTestId('m135-link').click();
-    await p.waitForURL(BASE + '/projects/bmw-m135i');
-    ok('Gallery: M135i opens its own project', (await p.getByTestId('project-vehicle').textContent()).includes('+1000 HP'));
+    await p.waitForURL(BASE + '/projects/mercedes-s580-maybach');
+    ok('Gallery: Maybach opens its own project', (await p.getByTestId('project-vehicle').textContent()).includes('Mercedes S580 Maybach'));
     await p.goto(BASE + '/projects/audi-rs6', { waitUntil: 'networkidle' });
     ok('Audi RS6 Performance project page', (await p.locator('h1').innerText()).includes('Audi RS6 Performance') && (await p.locator('[data-testid=project-slot]').count()) === 7);
     await p.goto(BASE + '/', { waitUntil: 'networkidle' });

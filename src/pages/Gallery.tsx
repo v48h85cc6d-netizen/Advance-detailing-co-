@@ -27,7 +27,7 @@ export default function Gallery() {
   usePageSeo('gallery');
   const [open, setOpen] = useState<number | null>(null);
   const lambo = getProject('audi-rs6')!;
-  const m135 = getProject('bmw-m135i')!;
+  const m135 = getProject('mercedes-s580-maybach')!;
 
   const items: LightboxItem[] = useMemo(
     () => slots('gallery', GALLERY_SLOTS).map((src, i) => ({ src, alt: t('gallery.photoAlt', { n: i + 1 }), folder: 'gallery' })),
@@ -88,31 +88,30 @@ export default function Gallery() {
         </div>
       </section>
 
-      {/* Special project: BMW M135i Engine — 1 of 1, +1000 HP */}
+      {/* Special project: Mercedes S580 Maybach */}
       <section {...ve('gallery.m135i', 'section')} className="section border-t border-line bg-bg-2" aria-labelledby="m135-title" data-testid="gallery-m135i">
         <div className="container-lux grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <Link to={to(`/projects/${m135.slug}`)} className="group block" tabIndex={-1} aria-hidden="true">
             <ParallaxReveal className="relative aspect-[4/3] rounded-[1.75rem]">
               <div data-parallax className="absolute -inset-y-[10%] inset-x-0">
-                <ImageSlot src={coverImage(m135.folder)} alt={t('projects.bmw-m135i.vehicle')} folder={m135.folder} className="h-full w-full transition-transform duration-[1.6s] group-hover:scale-[1.04]" />
+                <ImageSlot src={coverImage(m135.folder)} alt={t('projects.mercedes-s580-maybach.vehicle')} folder={m135.folder} className="h-full w-full transition-transform duration-[1.6s] group-hover:scale-[1.04]" />
               </div>
-              <span className="absolute right-5 top-5 rounded-full bg-white px-4 py-2 text-[0.65rem] font-bold uppercase tracking-[0.2em] text-black">1 / 1</span>
             </ParallaxReveal>
           </Link>
           <div className="flex flex-col gap-7">
-            <SectionHeading eyebrow={t('gallery.specialLabel')} title={t('projects.bmw-m135i.title')} />
+            <SectionHeading eyebrow={t('gallery.specialLabel')} title={t('projects.mercedes-s580-maybach.title')} />
             <Reveal>
               <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line">
                 <div className="bg-bg-2 p-5">
                   <dt className="text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-muted">{t('common.vehicle')}</dt>
-                  <dd className="mt-2 font-medium">{t('projects.bmw-m135i.vehicle')}</dd>
+                  <dd className="mt-2 font-medium">{t('projects.mercedes-s580-maybach.vehicle')}</dd>
                 </div>
                 <div className="bg-bg-2 p-5">
                   <dt className="text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-muted">{t('common.service')}</dt>
-                  <dd className="mt-2 font-medium">{t('projects.bmw-m135i.service')}</dd>
+                  <dd className="mt-2 font-medium">{t('projects.mercedes-s580-maybach.service')}</dd>
                 </div>
               </dl>
-              <p className="lead mt-7">{t('projects.bmw-m135i.description')}</p>
+              <p className="lead mt-7">{t('projects.mercedes-s580-maybach.description')}</p>
               <Link to={to(`/projects/${m135.slug}`)} className="btn btn-ghost mt-8" data-testid="m135-link">
                 {t('common.viewMore')} <ArrowIcon width={16} height={16} />
               </Link>
