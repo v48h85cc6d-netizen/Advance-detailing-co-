@@ -19,7 +19,7 @@ const MAX_LEN = 0.11;
 const SRC = '/assets/sounds/ui-clicks.mp3';
 
 /** Subtle per-kind levels (linear gain). */
-const LEVEL: Record<SoundKind, number> = { button: 0.32, nav: 0.26, card: 0.22, gallery: 0.28, switch: 0.3, ui: 0.24 };
+const LEVEL: Record<SoundKind, number> = { button: 0.524, nav: 0.357, card: 0.411, gallery: 0.357, switch: 0.337, ui: 0.33 };
 const MIN_INTERVAL_MS = 55; // ignore bursts (double events, label → checkbox, fast repeats)
 const IDLE_SUSPEND_MS = 15000;
 export const SOUND_KEY = 'adc-sound';

@@ -141,10 +141,13 @@ async function expectSilence(page, action, label) {
       }
       ok('Variations: never the same sample twice in a row', vars.every((v, i) => i === 0 || v !== vars[i - 1]), vars.join(','));
       // drag on the certification slide (mouse)
-      const slide = page.locator('[data-testid=cert-slide]').last();
-      await slide.scrollIntoViewIfNeeded();
-      await page.waitForTimeout(600);
-      const b = await slide.boundingBox();
+      // drag on the carousel's stable container (hovering it pauses autoplay, so the slide is not swapped mid-test)
+      const carousel = page.locator('[data-testid=certifications] [aria-roledescription="carousel"]');
+      await carousel.scrollIntoViewIfNeeded();
+      await carousel.hover();
+      await page.waitForTimeout(1000);
+      const cb = await carousel.boundingBox();
+      const b = { x: cb.x, y: cb.y, width: cb.width, height: cb.height * 0.7 };
       await expectSilence(page, async () => {
         await page.mouse.move(b.x + b.width / 2, b.y + b.height / 2);
         await page.mouse.down();

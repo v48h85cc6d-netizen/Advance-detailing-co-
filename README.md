@@ -273,8 +273,11 @@ plus ±2.5 % pitch and ±0.6 dB level humanisation, so it never sounds identical
 * **Code:** `src/lib/sound.ts` (engine + click→sound rules), `src/components/SoundToggle.tsx`.
   To give an element a specific sound add `data-sound="button|nav|card|gallery|switch|ui"`, or `data-sound="none"`
   to silence it. Levels per kind: `LEVEL` in `src/lib/sound.ts`.
-* **Changing the sounds:** they are synthesised with a physical model of a mechanical switch (no samples, no
-  licences) by `python3 scripts/generate-sounds.py` (needs numpy + ffmpeg); tweak the parameters there and re-run.
+* **Changing the sounds:** they are synthesised with a physical model of precision automotive switchgear (sound
+  design v2: controlled contact transient, damped detuned housing resonances, soft low body, secondary latch — no
+  samples, no licences) by `python3 scripts/generate-sounds.py` (needs numpy + ffmpeg). Tweak the parameters or the
+  per-category loudness targets (`TARGET_DBA`) and re-run; the script measures the encoded sprite and prints the
+  calibrated `LEVEL` line to paste into `src/lib/sound.ts`.
   To use your own recordings instead, build a mono sprite in the same layout (6 kinds in the order
   button, nav, card, gallery, switch, ui; 3 variations each; one every 0.18 s) and save it as `ui-clicks.mp3`.
   The exact start of each sound is detected automatically.
