@@ -3,6 +3,8 @@
  * Converts large JPG/PNG photos in public/assets/<folder>/ to optimised WebP
  * (max 2400px wide, quality 82). Originals are moved to ./assets-originals/
  * (outside the website) so the site only ships the optimised files.
+ * Also creates small thumbnails (480px wide) in public/assets/<folder>/thumbs/ — used by
+ * photo grids (e.g. the Audi RS3 card); the full image is still used in the lightbox.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -29,4 +31,20 @@ for (const folder of fs.readdirSync(assets)) {
     count++;
   }
 }
+// thumbnails for every optimised photo (skipped when already up to date)
+let thumbs = 0;
+for (const folder of fs.readdirSync(assets)) {
+  const dir = path.join(assets, folder);
+  if (SKIP.has(folder) || !fs.statSync(dir).isDirectory()) continue;
+  for (const file of fs.readdirSync(dir)) {
+    if (!/\.(webp|avif)$/i.test(file)) continue;
+    const src = path.join(dir, file);
+    const out = path.join(dir, 'thumbs', file.replace(/\.(avif)$/i, '.webp'));
+    if (fs.existsSync(out) && fs.statSync(out).mtimeMs >= fs.statSync(src).mtimeMs) continue;
+    fs.mkdirSync(path.dirname(out), { recursive: true });
+    await sharp(src).resize({ width: 480, withoutEnlargement: true }).webp({ quality: 76 }).toFile(out);
+    thumbs++;
+  }
+}
 console.log(count ? `Optimised ${count} image(s). Originals saved in ./assets-originals/` : 'No JPG/PNG photos to optimise.');
+if (thumbs) console.log(`Created ${thumbs} thumbnail(s) in <folder>/thumbs/`);

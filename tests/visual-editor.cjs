@@ -105,7 +105,7 @@ const selectedType = (page) => page.getByTestId('inspector').getAttribute('data-
     const cb = await card.boundingBox();
     await pick(page, card, { position: { x: 10, y: cb.height - 10 } });
     ok('Select card', (await selectedId(page)) === 'card.project.audi-rs3' && (await selectedType(page)) === 'card');
-    await pick(page, frame.locator('[data-visual-id="card.project.audi-rs3"] [data-visual-type=image]'));
+    await pick(page, frame.locator('[data-visual-id="card.project.audi-rs3"] [data-visual-type=image]').first()); // the RS3 card holds 9 photos
     ok('Select image', (await selectedType(page)) === 'image' && /image\.audi-rs3/.test(await selectedId(page)));
     await pick(page, frame.locator('[data-visual-id="card.project.audi-rs3.vehicle"]'));
     ok('Inspector shows only relevant controls (text: content+typography, no image)', (await page.getByTestId('sec-typography').count()) === 1 && (await page.getByTestId('sec-image').count()) === 0);

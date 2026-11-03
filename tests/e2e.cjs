@@ -227,7 +227,9 @@ async function ctxWith(browser, opts = {}, { intro = false, consent = true, them
       const txt = (await card.innerText()).toLowerCase();
       [veh, color, svc] = [veh, color, svc].map((x) => x.toLowerCase());
       const empty = await card.locator('[data-filled=false]').count();
-      ok(`Home card ${slug}: content + empty image container`, txt.includes(veh) && txt.includes(color) && txt.includes(svc) && /shiko më shumë/i.test(txt) && empty === 1);
+      const filled = await card.locator('[data-filled=true]').count();
+      const media = slug === 'audi-rs3' ? filled === 9 && empty === 0 : empty === 1 && filled === 0; // Audi RS3 card holds its 9-photo gallery
+      ok(`Home card ${slug}: content + ${slug === 'audi-rs3' ? '9-photo gallery' : 'empty image container'}`, txt.includes(veh) && txt.includes(color) && txt.includes(svc) && /shiko më shumë/i.test(txt) && media);
       await card.scrollIntoViewIfNeeded();
       await p.getByTestId(`project-link-${slug}`).click();
       await p.waitForURL(BASE + `/projects/${slug}`);
@@ -235,6 +237,36 @@ async function ctxWith(browser, opts = {}, { intro = false, consent = true, them
       const folders = await p.locator(`[data-testid=project-${slug}] [data-slot]`).evaluateAll((els) => [...new Set(els.map((e) => e.getAttribute('data-slot')))]);
       ok(`Project ${slug}: opens correct project, all photos from its own folder`, folders.length === 1 && folders[0] === slug, folders.join(','));
     }
+    // ---- Audi RS3: 9-photo gallery inside its homepage card
+    await p.goto(BASE + '/', { waitUntil: 'networkidle' });
+    const rs3 = p.getByTestId('card-gallery-audi-rs3');
+    await rs3.scrollIntoViewIfNeeded();
+    await p.waitForTimeout(1500);
+    const tiles = rs3.getByTestId('card-gallery-tile');
+    const loadedImgs = await rs3.locator('img').evaluateAll((imgs) => imgs.filter((i) => i.complete && i.naturalWidth > 0).length);
+    ok('Audi RS3 card: exactly 9 photos, all loaded, grouped in the card', (await tiles.count()) === 9 && loadedImgs === 9 && (await p.locator('[data-testid=card-gallery-tile]').count()) === 9);
+    ok('Other featured cards unchanged (no gallery)', (await p.locator('[data-testid^="card-gallery-"]:not([data-testid="card-gallery-tile"])').count()) === 1 && (await p.locator('[data-testid="project-card-ferrari-488-pista"] [data-testid="card-gallery-tile"], [data-testid="project-card-bmw-740d"] [data-testid="card-gallery-tile"]').count()) === 0);
+    await tiles.nth(0).click();
+    const rlb = p.getByTestId('lightbox');
+    await rlb.waitFor();
+    const rc = () => p.getByTestId('lightbox-counter').textContent();
+    ok('Audi RS3 lightbox opens on the clicked photo (1/9)', (await rc()).trim() === '01 / 09' && (await rlb.locator('img').first().getAttribute('src')).includes('/assets/audi-rs3/01.'));
+    await p.getByTestId('lightbox-next').click();
+    await p.waitForTimeout(600);
+    const second = (await rc()).trim();
+    await p.getByTestId('lightbox-prev').click();
+    await p.waitForTimeout(600);
+    const back = (await rc()).trim();
+    await p.keyboard.press('ArrowLeft'); // from photo 1, previous wraps to the last photo
+    await p.waitForTimeout(600);
+    const wrapped = (await rc()).trim();
+    ok('Audi RS3 lightbox next / previous / wrap-around', second === '02 / 09' && back === '01 / 09' && wrapped === '09 / 09', `${second} → ${back} → ${wrapped}`);
+    await p.getByTestId('lightbox-close').click();
+    await rlb.waitFor({ state: 'detached' });
+    ok('Audi RS3 lightbox close button', true);
+    await p.goto(BASE + '/projects/audi-rs3', { waitUntil: 'networkidle' });
+    ok('Audi RS3 project page shows its own photos', (await p.locator('[data-testid=project-slot] [data-filled=true]').count()) === 9);
+
     await p.goto(BASE + '/gallery', { waitUntil: 'networkidle' });
     ok('Gallery: Lamborghini featured large container', (await p.getByTestId('gallery-featured').innerText()).includes('Lamborghini Aventador SV Roadster') && (await p.locator('[data-testid=gallery-featured] [data-slot=lamborghini-aventador]').count()) === 1);
     const slots = p.getByTestId('gallery-slot');
