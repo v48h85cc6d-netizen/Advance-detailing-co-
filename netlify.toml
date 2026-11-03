@@ -2,6 +2,10 @@
   command = "npm run build"
   publish = "dist"
 
+[build.environment]
+  # Vite 7 needs Node 20.19+ / 22.12+ — pin it so Git-based Netlify builds never fall back to an older Node
+  NODE_VERSION = "22"
+
 [[headers]]
   for = "/assets/*"
   [headers.values]
