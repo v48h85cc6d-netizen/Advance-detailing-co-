@@ -4,7 +4,6 @@ import { PageHeader } from '../components/PageHeader';
 import { ImageSlot } from '../components/ImageSlot';
 import { CtaBand } from '../components/CtaBand';
 import { ParallaxReveal, Reveal, SplitHeading } from '../components/Reveal';
-import { folderImages, named } from '../config/images';
 import { gsap, prefersReducedMotion, useGSAP } from '../lib/gsap';
 import { usePageSeo } from '../lib/usePageSeo';
 import { visual } from '../lib/visual';
@@ -15,7 +14,8 @@ export default function About() {
   const { t } = useT();
   usePageSeo('about');
   const timeline = useRef<HTMLDivElement>(null);
-  const photo = named('about', 'company') ?? folderImages('about')[0];
+  // Brand script logo shown in the About image box (exact supplied image, lossless WebP)
+  const aboutLogo = '/assets/logo/advance-detailing-script.webp';
   const values = t('about.values', { returnObjects: true }) as string[];
 
   useGSAP(
@@ -33,11 +33,11 @@ export default function About() {
     <>
       <PageHeader page="about" keys={{ eyebrow: 'about.eyebrow', title: 'about.title', text: 'about.intro' }} eyebrow={t('about.eyebrow')} title={t('about.title')} text={t('about.intro')} />
 
-      {/* Company photo — single empty container until a photo is added to /public/assets/about/ */}
+      {/* About image box — Advance Detailing Co. script logo (contained, never cropped) */}
       <section {...ve('about.photo', 'section')} className="container-lux" aria-label={t('about.photoAlt')}>
-        <ParallaxReveal className="relative aspect-[4/5] rounded-[1.75rem] sm:aspect-[21/9]">
+        <ParallaxReveal className="relative aspect-[4/5] rounded-[1.75rem] bg-[#eceff2] sm:aspect-[21/9]">
           <div data-parallax className="absolute -inset-y-[10%] inset-x-0">
-            <ImageSlot src={photo} alt={t('about.photoAlt')} folder="about" className="h-full w-full" priority />
+            <ImageSlot src={aboutLogo} alt={t('a11y.logoAlt')} className="flex h-full w-full items-center justify-center px-[8%] py-[14%] sm:px-[10%] sm:py-[9%]" imgClassName="!h-auto !w-auto max-h-full max-w-full !object-contain [mask-image:linear-gradient(to_right,transparent,black_2.5%,black_97.5%,transparent),linear-gradient(to_bottom,transparent,black_2.5%,black_97.5%,transparent)] [mask-composite:intersect] [-webkit-mask-composite:source-in]" priority />
           </div>
         </ParallaxReveal>
       </section>
