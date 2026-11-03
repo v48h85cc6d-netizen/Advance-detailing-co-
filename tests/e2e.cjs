@@ -228,9 +228,9 @@ async function ctxWith(browser, opts = {}, { intro = false, consent = true, them
       [veh, color, svc] = [veh, color, svc].map((x) => x.toLowerCase());
       const empty = await card.locator('[data-filled=false]').count();
       const imgs = await card.locator('img').evaluateAll((els) => els.map((e) => e.getAttribute('src')));
-      // Audi RS3 + Ferrari: exactly one image = their own Photo 1; BMW: still an empty container
-      const media = slug === 'bmw-740d' ? empty === 1 && imgs.length === 0 : empty === 0 && imgs.length === 1 && imgs[0] === `/assets/${slug}/01.webp`;
-      ok(`Home card ${slug}: content + ${slug === 'bmw-740d' ? 'empty image container' : 'Photo 1 only'}`, txt.includes(veh) && txt.includes(color) && txt.includes(svc) && /shiko më shumë/i.test(txt) && media, imgs.join(','));
+      // Audi RS3, Ferrari, BMW 740d: exactly one image = their own Photo 1
+      const media = empty === 0 && imgs.length === 1 && imgs[0] === `/assets/${slug}/01.webp`;
+      ok(`Home card ${slug}: content + Photo 1 only`, txt.includes(veh) && txt.includes(color) && txt.includes(svc) && /shiko më shumë/i.test(txt) && media, imgs.join(','));
       await card.scrollIntoViewIfNeeded();
       await p.getByTestId(`project-link-${slug}`).click();
       await p.waitForURL(BASE + `/projects/${slug}`);
@@ -239,7 +239,7 @@ async function ctxWith(browser, opts = {}, { intro = false, consent = true, them
       ok(`Project ${slug}: opens correct project, all photos from its own folder`, folders.length === 1 && folders[0] === slug, folders.join(','));
     }
     // ---- Audi RS3 + Ferrari: project intro = Photo 1, galleries with every photo in order
-    for (const [slug, n] of [['audi-rs3', 9], ['ferrari-488-pista', 14]]) {
+    for (const [slug, n] of [['audi-rs3', 9], ['ferrari-488-pista', 14], ['bmw-740d', 8]]) {
       await p.goto(BASE + `/projects/${slug}`, { waitUntil: 'networkidle' });
       const pad = (i) => String(i).padStart(2, '0');
       const hero = await p.locator(`[data-testid=project-${slug}] img`).first().getAttribute('src');
