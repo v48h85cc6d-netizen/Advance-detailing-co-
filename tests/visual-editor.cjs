@@ -37,7 +37,7 @@ async function openEditor(browser, viewport = { width: 1440, height: 900 }, { fr
   await ctx.addInitScript(() => {
     try {
       // keep the site's consent banner out of the way in tests
-      localStorage.setItem('adc-consent', JSON.stringify({ v: 1, ts: Date.now(), analytics: false, media: false }));
+      sessionStorage.setItem('adc-consent', JSON.stringify({ v: 1, ts: Date.now(), analytics: false, media: false }));
     } catch (e) {}
   });
   const page = await ctx.newPage();
@@ -173,11 +173,11 @@ const selectedType = (page) => page.getByTestId('inspector').getAttribute('data-
     await page.getByTestId('image-file').setInputFiles(path.join(ROOT, 'public', 'og-image.jpg'));
     await page.getByTestId('image-preview').waitFor({ timeout: 8000 });
     await page.waitForTimeout(500);
-    const bg = await frame.locator('[data-visual-id="image.gallery.03"]').evaluate((e) => getComputedStyle(e).backgroundImage);
+    const bg = await frame.locator('[data-visual-id="image.gallery.03"]').evaluate((e) => { const img = e.querySelector('img'); return img ? getComputedStyle(img).content : getComputedStyle(e).backgroundImage; });
     ok('Image replacement uploads + previews in the site', bg.includes('/__visual-editor/uploads/'), bg.slice(0, 80));
     await page.getByTestId('object-fit').selectOption('contain');
     await page.waitForTimeout(300);
-    ok('Object-fit change previews', (await frame.locator('[data-visual-id="image.gallery.03"]').evaluate((e) => getComputedStyle(e).backgroundSize)) === 'contain');
+    ok('Object-fit change previews', (await frame.locator('[data-visual-id="image.gallery.03"]').evaluate((e) => { const img = e.querySelector('img'); return img ? getComputedStyle(img).objectFit : getComputedStyle(e).backgroundSize; })) === 'contain');
     const uploaded = fs.readdirSync(path.join(ROOT, '.visual-editor', 'uploads')).length > 0;
     ok('Uploaded file stored in .visual-editor/uploads (not in public/ or src/)', uploaded);
 

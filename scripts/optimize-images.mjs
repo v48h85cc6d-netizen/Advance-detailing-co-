@@ -29,4 +29,26 @@ for (const folder of fs.readdirSync(assets)) {
     count++;
   }
 }
+// Responsive sizes for every photo: <folder>/sizes/<name>-640.webp and -960.webp (only when smaller than
+// the original). Grids and cards use these via srcset; the full image is loaded only when it is really needed.
+const WIDTHS = [640, 960];
+let sized = 0;
+for (const folder of fs.readdirSync(assets)) {
+  const dir = path.join(assets, folder);
+  if (SKIP.has(folder) || !fs.statSync(dir).isDirectory()) continue;
+  for (const file of fs.readdirSync(dir)) {
+    if (!/\.(webp|avif)$/i.test(file)) continue;
+    const src = path.join(dir, file);
+    const { width = 0 } = await sharp(src).metadata();
+    for (const w of WIDTHS) {
+      if (w >= width) continue;
+      const out = path.join(dir, 'sizes', `${path.parse(file).name}-${w}.webp`);
+      if (fs.existsSync(out) && fs.statSync(out).mtimeMs >= fs.statSync(src).mtimeMs) continue;
+      fs.mkdirSync(path.dirname(out), { recursive: true });
+      await sharp(src).resize({ width: w }).webp({ quality: 80 }).toFile(out);
+      sized++;
+    }
+  }
+}
 console.log(count ? `Optimised ${count} image(s). Originals saved in ./assets-originals/` : 'No JPG/PNG photos to optimise.');
+if (sized) console.log(`Created ${sized} responsive size(s) in <folder>/sizes/`);

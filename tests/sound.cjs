@@ -43,7 +43,7 @@ async function setup(browser, device, { consent = true, soundPref } = {}) {
   await ctx.addInitScript(
     ({ consent, soundPref }) => {
       try {
-        if (consent) localStorage.setItem('adc-consent', JSON.stringify({ v: 1, ts: Date.now(), analytics: false, media: false }));
+        if (consent) sessionStorage.setItem('adc-consent', JSON.stringify({ v: 1, ts: Date.now(), analytics: false, media: false }));
         if (soundPref) localStorage.setItem('adc-sound', soundPref);
       } catch (e) {}
     },

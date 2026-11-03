@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useT } from '../lib/useT';
 import { cn } from '../lib/cn';
+import { srcSetFor } from '../config/images';
 import { visual } from '../lib/visual';
 
 const ve = visual('src/components/ImageSlot.tsx');
@@ -41,8 +42,9 @@ export function ImageSlot({
       {hasImage ? (
         <img
           src={src}
+          srcSet={srcSetFor(src)}
           alt={alt}
-          sizes={sizes}
+          sizes={sizes ?? '100vw'}
           loading={priority ? 'eager' : 'lazy'}
           fetchPriority={priority ? 'high' : 'auto'}
           decoding="async"

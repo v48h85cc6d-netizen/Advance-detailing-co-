@@ -501,7 +501,7 @@
         {
           "h": "2. Notwendig (immer aktiv)",
           "p": [
-            "adc-consent — speichert Ihre Einwilligung (localStorage, bis zu 12 Monate).",
+            "adc-consent — speichert Ihre Einwilligung nur für den aktuellen Besuch (sessionStorage); bei jedem neuen Besuch werden Sie erneut gefragt.",
             "adc-theme — speichert das dunkle oder helle Farbschema (localStorage).",
             "adc-sound — speichert Ihre Einstellung für Oberflächentöne (an/aus) (localStorage).",
             "adc-intro — vermerkt, dass das Intro in dieser Sitzung gezeigt wurde (sessionStorage, wird beim Schließen des Browsers gelöscht)."

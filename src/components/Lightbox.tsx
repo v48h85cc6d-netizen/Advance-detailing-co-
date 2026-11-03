@@ -66,6 +66,19 @@ export function Lightbox({ items, index, onClose, onIndex }: { items: LightboxIt
     };
   }, [open, go, onClose]);
 
+  // Preload the previous and next full-size photo while the current one is shown.
+  useEffect(() => {
+    if (index === null || count < 2) return;
+    for (const d of [1, -1]) {
+      const s = items[(index + d + count) % count]?.src;
+      if (s) {
+        const img = new Image();
+        img.decoding = 'async';
+        img.src = s;
+      }
+    }
+  }, [index, count, items]);
+
   const toggleFs = () => {
     if (!document.fullscreenElement) rootRef.current?.requestFullscreen?.().catch(() => undefined);
     else document.exitFullscreen().catch(() => undefined);
@@ -130,7 +143,7 @@ export function Lightbox({ items, index, onClose, onIndex }: { items: LightboxIt
                 className="flex h-full w-full items-center justify-center"
               >
                 {item.src ? (
-                  <img src={item.src} alt={item.alt} className="max-h-full max-w-full select-none rounded-lg object-contain" draggable={false} />
+                  <img src={item.src} alt={item.alt} decoding="async" className="max-h-full max-w-full select-none rounded-lg object-contain" draggable={false} />
                 ) : (
                   <ImageSlot alt={item.alt} folder={item.folder} index={index! + 1} className="aspect-[4/3] w-full max-w-4xl rounded-2xl" />
                 )}

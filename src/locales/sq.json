@@ -501,7 +501,7 @@
         {
           "h": "2. Të domosdoshme (gjithmonë aktive)",
           "p": [
-            "adc-consent — ruan zgjedhjen tuaj të pëlqimit (localStorage, deri në 12 muaj).",
+            "adc-consent — ruan zgjedhjen tuaj të pëlqimit vetëm gjatë vizitës aktuale (sessionStorage); në çdo vizitë të re pyeteni përsëri.",
             "adc-theme — ruan temën e errët ose të ndritshme (localStorage).",
             "adc-sound — ruan zgjedhjen tuaj për tingujt e ndërfaqes (aktiv/joaktiv) (localStorage).",
             "adc-intro — shënon që intro është parë gjatë sesionit (sessionStorage, fshihet kur mbyllet shfletuesi)."

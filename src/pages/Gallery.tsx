@@ -77,7 +77,7 @@ export default function Gallery() {
                   aria-label={t('common.openImage', { n: i + 1 })}
                   className="group relative block h-full w-full overflow-hidden rounded-2xl border border-line"
                 >
-                  <ImageSlot src={it.src} alt={it.alt} folder="gallery" index={i + 1} className="h-full w-full transition-transform duration-[1.2s] ease-[var(--ease-out-expo)] group-hover:scale-[1.05]" />
+                  <ImageSlot src={it.src} alt={it.alt} folder="gallery" index={i + 1} sizes={/col-span-2/.test(SPANS[i]) ? '(min-width: 1024px) 50vw, 50vw' : '(min-width: 1024px) 25vw, 50vw'} className="h-full w-full transition-transform duration-[1.2s] ease-[var(--ease-out-expo)] group-hover:scale-[1.05]" />
                   <span className="absolute right-3 top-3 grid grid-cols-1 h-10 w-10 scale-75 place-items-center rounded-full bg-black/50 text-white opacity-0 backdrop-blur transition-all duration-500 group-hover:scale-100 group-hover:opacity-100">
                     <ExpandIcon width={16} height={16} />
                   </span>

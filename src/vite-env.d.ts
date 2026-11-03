@@ -3,6 +3,8 @@
 declare module 'virtual:asset-manifest' {
   const manifest: Record<string, string[]>;
   export default manifest;
+  /** responsive variants per original image URL: [width, url][] (ascending) */
+  export const sizes: Record<string, [number, string][]>;
 }
 
 interface ImportMetaEnv {

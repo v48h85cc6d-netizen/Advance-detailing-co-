@@ -1,4 +1,4 @@
-import { Canvas, useFrame } from '@react-three/fiber';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Environment, Lightformer } from '@react-three/drei';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import * as THREE from 'three';
@@ -89,14 +89,15 @@ function Pyramid({ active, reduced, dark }: { active: boolean; reduced: boolean;
   const geoUp = useMemo(() => frameGeometry(true), []);
   const geoDown = useMemo(() => frameGeometry(false), []);
   const material = useMemo(
-    () => new THREE.MeshPhysicalMaterial({ metalness: 1, roughness: 0.16, clearcoat: 1, clearcoatRoughness: 0.08, color: '#e9e9ee', envMapIntensity: 1.25 }),
+    // Standard (not Physical/clearcoat) metal: same mirrored chrome look, one specular pass instead of two
+    () => new THREE.MeshStandardMaterial({ metalness: 1, roughness: 0.14, color: '#e9e9ee', envMapIntensity: 1.35 }),
     [],
   );
   const startedAt = useRef<number | null>(null);
 
   useEffect(() => {
     material.color.set(dark ? '#e9e9ee' : '#3b3b41');
-    material.roughness = dark ? 0.16 : 0.22;
+    material.roughness = dark ? 0.14 : 0.2;
   }, [dark, material]);
 
   useEffect(() => () => {
@@ -145,6 +146,43 @@ function Pyramid({ active, reduced, dark }: { active: boolean; reduced: boolean;
   );
 }
 
+/**
+ * Render scheduling (frameloop="demand"): full frame rate only while the pyramid assembles and while the
+ * visitor moves the pointer or scrolls (so tilt / scroll-explode stay perfectly smooth); otherwise the idle
+ * float continues at ~30 fps. Nothing renders while the canvas is off-screen or the tab is hidden.
+ */
+function FrameDriver({ active, reduced }: { active: boolean; reduced: boolean }) {
+  const invalidate = useThree((s) => s.invalidate);
+  useEffect(() => {
+    if (reduced) {
+      invalidate();
+      const on = () => invalidate();
+      window.addEventListener('scroll', on, { passive: true });
+      return () => window.removeEventListener('scroll', on);
+    }
+    let hotUntil = performance.now() + (active ? 3200 : 600);
+    let raf = 0;
+    const loop = () => {
+      if (performance.now() < hotUntil && !document.hidden) invalidate();
+      raf = requestAnimationFrame(loop);
+    };
+    raf = requestAnimationFrame(loop);
+    const idle = window.setInterval(() => {
+      if (performance.now() >= hotUntil && !document.hidden) invalidate();
+    }, 33);
+    const heat = () => (hotUntil = Math.max(hotUntil, performance.now() + 900));
+    window.addEventListener('pointermove', heat, { passive: true });
+    window.addEventListener('scroll', heat, { passive: true });
+    return () => {
+      cancelAnimationFrame(raf);
+      window.clearInterval(idle);
+      window.removeEventListener('pointermove', heat);
+      window.removeEventListener('scroll', heat);
+    };
+  }, [active, reduced, invalidate]);
+  return null;
+}
+
 export default function PyramidScene({ active, dark }: { active: boolean; dark: boolean }) {
   const wrap = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(true);
@@ -161,14 +199,15 @@ export default function PyramidScene({ active, dark }: { active: boolean; dark: 
   return (
     <div ref={wrap} className="h-full w-full" aria-hidden="true">
       <Canvas
-        dpr={mobile ? [1, 1.5] : [1, 1.75]}
+        dpr={mobile ? [1, 1.5] : [1, 1.25]}
         camera={{ position: [0, 0, 9.5], fov: 34 }}
         gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
-        frameloop={reduced ? 'demand' : visible ? 'always' : 'never'}
+        frameloop={visible ? 'demand' : 'never'}
         style={{ background: 'transparent' }}
       >
         <ambientLight intensity={0.2} />
         <directionalLight position={[4, 6, 6]} intensity={1.2} />
+        <FrameDriver active={active} reduced={reduced} />
         <Pyramid active={active} reduced={reduced} dark={dark} />
         <Environment resolution={256} frames={1}>
           <Lightformer form="rect" intensity={3} position={[0, 4, 6]} scale={[12, 2, 1]} />

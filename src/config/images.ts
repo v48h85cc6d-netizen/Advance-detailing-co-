@@ -1,4 +1,4 @@
-import manifest from 'virtual:asset-manifest';
+import manifest, { sizes as sizeMap } from 'virtual:asset-manifest';
 
 /**
  * IMAGE SLOTS
@@ -35,6 +35,13 @@ export function slots(folder: AssetFolder, count: number): (string | undefined)[
 export function coverImage(folder: AssetFolder): string | undefined {
   const files = folderImages(folder);
   return files.find(isCover) ?? files[0];
+}
+
+/** srcset with the small responsive copies + the original (largest), or undefined if none exist. */
+export function srcSetFor(src?: string, originalWidth = 1600): string | undefined {
+  const list = src ? sizeMap[src] : undefined;
+  if (!list?.length) return undefined;
+  return [...list.map(([w, u]) => `${u} ${w}w`), `${src} ${originalWidth}w`].join(', ');
 }
 
 /** Find a specifically-named file, e.g. named('certifications', 'carpro'). */

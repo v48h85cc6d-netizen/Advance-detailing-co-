@@ -71,7 +71,7 @@ Every empty container on the website reads from **its own folder** — photograp
 2. Name them in the order you want them to appear: `01.jpg`, `02.jpg`, `03.jpg` … Photos fill the containers in filename order
    (natural order, so `10.jpg` comes after `09.jpg`); the first photo goes into container 1, the second into container 2, etc.
 3. Name the main/cover photo **`cover.jpg`** (used on homepage cards, the large featured containers and the top of each project page). Without a `cover.*` the first photo is used.
-4. (Recommended) run `npm run images` — converts JPG/PNG to optimised WebP (max 2400 px) and moves the originals to `./assets-originals/`.
+4. Run `npm run images` (also creates the small responsive copies in `<folder>/sizes/` used by grids and cards via `srcset`) — converts JPG/PNG to optimised WebP (max 2400 px) and moves the originals to `./assets-originals/`.
 5. `npm run build` (the dev server picks up new photos automatically).
 
 | Where on the site | Folder | Slots |
@@ -205,6 +205,8 @@ favicons & web manifest · semantic headings · alt texts · lazy-loaded images 
 ## 8. Cookies & privacy (GDPR)
 
 * Cookie banner: **Accept All**, **Reject Non-Essential**, **Cookie Settings** (also reachable from the footer).
+  The choice is kept **only for the current visit** (sessionStorage): it is remembered while navigating between pages,
+  and the banner asks again on every new visit. Nothing is stored permanently.
 * Nothing non-essential runs before consent: the Google Maps embed loads only with "External media" consent;
   Google Analytics (optional, `VITE_GA_ID`) loads only with "Analytics" consent. Withdrawing consent removes `_ga` cookies.
 * Fonts are self-hosted (no requests to Google Fonts).

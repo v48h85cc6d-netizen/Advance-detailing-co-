@@ -18,7 +18,7 @@ async function ctxWith(browser, opts = {}, { intro = false, consent = true, them
   await ctx.addInitScript(({ intro, consent, theme }) => {
     try {
       if (!intro) sessionStorage.setItem('adc-intro', '1');
-      if (consent) localStorage.setItem('adc-consent', JSON.stringify({ v: 1, ts: Date.now(), analytics: false, media: false }));
+      if (consent) sessionStorage.setItem('adc-consent', JSON.stringify({ v: 1, ts: Date.now(), analytics: false, media: false }));
       if (theme) localStorage.setItem('adc-theme', theme);
     } catch (e) {}
   }, { intro, consent, theme });
@@ -267,7 +267,10 @@ async function ctxWith(browser, opts = {}, { intro = false, consent = true, them
     await p.goto(BASE + '/gallery', { waitUntil: 'networkidle' });
     ok('Gallery: Audi RS6 Performance featured large container', (await p.getByTestId('gallery-featured').innerText()).includes('Audi RS6 Performance') && (await p.locator('[data-testid=gallery-featured] [data-slot=audi-rs6]').count()) === 1);
     const slots = p.getByTestId('gallery-slot');
-    ok('Gallery: 16 independent placeholders', (await slots.count()) === 16 && (await p.locator('[data-testid=gallery-slot] [data-slot=gallery]').count()) === 16);
+    ok('Gallery: 16 independent boxes (count unchanged)', (await slots.count()) === 16 && (await p.locator('[data-testid=gallery-slot] [data-slot=gallery]').count()) === 16);
+    const gsrc = await p.locator('[data-testid=gallery-slot] img').evaluateAll((e) => e.map((i) => i.getAttribute('src')));
+    ok('Gallery: all 16 boxes filled with their own photo 01–16 (no Coming Soon)', gsrc.length === 16 && gsrc.every((u, i) => u === `/assets/gallery/${String(i + 1).padStart(2, '0')}.webp`) && (await p.locator('[data-testid=gallery-slot] [data-filled=false]').count()) === 0);
+    ok('Gallery: grid uses small responsive images (srcset), not full size', await p.locator('[data-testid=gallery-slot] img').first().evaluate((i) => /-640\.webp 640w/.test(i.srcset) && !i.currentSrc.endsWith('/01.webp')));
     const m135 = await p.getByTestId('gallery-m135i').innerText();
     ok('Gallery: Mercedes S580 Maybach special project (Photo 1, no 1/1 badge)', /Mercedes S580 Maybach/.test(m135) && !/M135i|1000|1 \/ 1/.test(m135) && (await p.locator('[data-testid=gallery-m135i] img').evaluateAll((e) => e.map((i) => i.getAttribute('src')))).join() === '/assets/mercedes-s580-maybach/01.webp');
     // lightbox
@@ -361,7 +364,7 @@ async function ctxWith(browser, opts = {}, { intro = false, consent = true, them
     ok('Consent: no Google requests and no map before consent', google.length === 0 && (await p.getByTestId('map-iframe').count()) === 0);
     await p.getByTestId('cookie-reject').click();
     await p.getByTestId('cookie-banner').waitFor({ state: 'detached', timeout: 3000 }).catch(() => undefined);
-    const stored = JSON.parse(await p.evaluate(() => localStorage.getItem('adc-consent')));
+    const stored = JSON.parse(await p.evaluate(() => sessionStorage.getItem('adc-consent')));
     ok('Consent: Reject stores choice, banner hidden', stored.analytics === false && stored.media === false && (await p.getByTestId('cookie-banner').count()) === 0);
     await p.reload({ waitUntil: 'networkidle' });
     ok('Consent: choice remembered after reload; still no Google requests', (await p.getByTestId('cookie-banner').count()) === 0 && google.length === 0);
@@ -379,7 +382,19 @@ async function ctxWith(browser, opts = {}, { intro = false, consent = true, them
     await p2.goto(BASE + '/en/services', { waitUntil: 'networkidle' });
     ok('Consent (mobile, EN): banner translated', /reject non-essential/i.test(await p2.getByTestId('cookie-banner').innerText()));
     await p2.getByTestId('cookie-accept').tap();
-    ok('Consent: Accept All stores full consent', JSON.parse(await p2.evaluate(() => localStorage.getItem('adc-consent'))).media === true);
+    ok('Consent: Accept All stores full consent', JSON.parse(await p2.evaluate(() => sessionStorage.getItem('adc-consent'))).media === true);
+    // per-visit consent: kept while navigating, never stored permanently, asked again on a new visit
+    await p2.goto(BASE + '/en/gallery', { waitUntil: 'networkidle' });
+    await p2.goto(BASE + '/en/contact', { waitUntil: 'networkidle' });
+    ok('Consent (per visit): not shown again while navigating between pages', (await p2.getByTestId('cookie-banner').count()) === 0);
+    ok('Consent (per visit): nothing stored permanently (no localStorage / cookie)', (await p2.evaluate(() => localStorage.getItem('adc-consent'))) === null && !(await p2.context().cookies()).some((c) => /consent/i.test(c.name)));
+    const p3 = await c2.newPage(); // new tab = new visit
+    await p3.goto(BASE + '/en', { waitUntil: 'networkidle' });
+    await p3.getByTestId('cookie-banner').waitFor({ timeout: 8000 }).catch(() => undefined);
+    ok('Consent (per visit): asked again on a new visit', await p3.getByTestId('cookie-banner').isVisible());
+    await p3.getByTestId('cookie-reject').tap();
+    await p3.getByTestId('cookie-banner').waitFor({ state: 'detached', timeout: 3000 }).catch(() => undefined);
+    ok('Consent (per visit): Reject closes the popup for this visit', (await p3.getByTestId('cookie-banner').count()) === 0 && JSON.parse(await p3.evaluate(() => sessionStorage.getItem('adc-consent'))).media === false);
     await c2.close();
   }
 

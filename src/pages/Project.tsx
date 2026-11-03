@@ -102,7 +102,7 @@ function ProjectView({ slug }: { slug: string }) {
             {items.map((it, i) => (
               <li key={i} data-reveal className={i % 5 === 0 ? 'sm:col-span-2 lg:col-span-2' : ''} data-testid="project-slot">
                 <button type="button" onClick={() => setOpen(i)} aria-label={t('common.openImage', { n: i + 1 })} className="group relative block aspect-[4/3] w-full overflow-hidden rounded-2xl border border-line">
-                  <ImageSlot src={it.src} alt={it.alt} folder={project.folder} index={i + 1} className="h-full w-full transition-transform duration-[1.2s] group-hover:scale-[1.05]" />
+                  <ImageSlot src={it.src} alt={it.alt} folder={project.folder} index={i + 1} sizes={i % 5 === 0 ? '(min-width: 1024px) 66vw, 100vw' : '(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw'} className="h-full w-full transition-transform duration-[1.2s] group-hover:scale-[1.05]" />
                   <span className="absolute right-3 top-3 grid grid-cols-1 h-10 w-10 place-items-center rounded-full bg-black/50 text-white opacity-0 backdrop-blur transition-opacity group-hover:opacity-100">
                     <ExpandIcon width={16} height={16} />
                   </span>
