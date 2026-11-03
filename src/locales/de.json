@@ -70,6 +70,12 @@
     "light": "Hell",
     "dark": "Dunkel"
   },
+  "sound": {
+    "on": "Ton an",
+    "off": "Ton aus",
+    "turnOn": "Oberflächentöne einschalten",
+    "turnOff": "Oberflächentöne ausschalten"
+  },
   "intro": {
     "skip": "Intro überspringen",
     "enter": "Website betreten",
@@ -497,6 +503,7 @@
           "p": [
             "adc-consent — speichert Ihre Einwilligung (localStorage, bis zu 12 Monate).",
             "adc-theme — speichert das dunkle oder helle Farbschema (localStorage).",
+            "adc-sound — speichert Ihre Einstellung für Oberflächentöne (an/aus) (localStorage).",
             "adc-intro — vermerkt, dass das Intro in dieser Sitzung gezeigt wurde (sessionStorage, wird beim Schließen des Browsers gelöscht)."
           ]
         },

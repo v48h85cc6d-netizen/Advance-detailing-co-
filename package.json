@@ -11,7 +11,8 @@
     "images": "node scripts/optimize-images.mjs",
     "zip": "node scripts/make-zip.mjs",
     "test": "node tests/e2e.cjs http://localhost:4173",
-    "test:editor": "node tests/visual-editor.cjs http://localhost:5173"
+    "test:editor": "node tests/visual-editor.cjs http://localhost:5173",
+    "test:sound": "node tests/sound.cjs http://localhost:4173"
   },
   "dependencies": {
     "@fontsource-variable/manrope": "^5.3.0",

@@ -70,6 +70,12 @@
     "light": "Light",
     "dark": "Dark"
   },
+  "sound": {
+    "on": "Sound on",
+    "off": "Sound off",
+    "turnOn": "Turn interface sounds on",
+    "turnOff": "Turn interface sounds off"
+  },
   "intro": {
     "skip": "Skip Intro",
     "enter": "Enter website",
@@ -497,6 +503,7 @@
           "p": [
             "adc-consent — stores your consent choice (localStorage, up to 12 months).",
             "adc-theme — stores the dark or light theme (localStorage).",
+            "adc-sound — stores your interface sound preference (on/off) (localStorage).",
             "adc-intro — records that the intro was shown during this session (sessionStorage, deleted when the browser closes)."
           ]
         },

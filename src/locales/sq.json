@@ -70,6 +70,12 @@
     "light": "I ndritshëm",
     "dark": "I errët"
   },
+  "sound": {
+    "on": "Tingulli aktiv",
+    "off": "Tingulli joaktiv",
+    "turnOn": "Aktivizo tingujt e ndërfaqes",
+    "turnOff": "Çaktivizo tingujt e ndërfaqes"
+  },
   "intro": {
     "skip": "Kalo Intron",
     "enter": "Hyr në faqe",
@@ -497,6 +503,7 @@
           "p": [
             "adc-consent — ruan zgjedhjen tuaj të pëlqimit (localStorage, deri në 12 muaj).",
             "adc-theme — ruan temën e errët ose të ndritshme (localStorage).",
+            "adc-sound — ruan zgjedhjen tuaj për tingujt e ndërfaqes (aktiv/joaktiv) (localStorage).",
             "adc-intro — shënon që intro është parë gjatë sesionit (sessionStorage, fshihet kur mbyllet shfletuesi)."
           ]
         },

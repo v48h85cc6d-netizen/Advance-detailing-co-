@@ -242,3 +242,41 @@ live preview (desktop / tablet / mobile), with undo/redo and drafts that survive
 the source code is never modified by the editor. Export them with **Copy Change Request** or **Export Draft JSON**
 (also auto-saved to `.visual-editor/`) and ask Claude Code to implement them. The editor does not exist in production
 builds. Full guide: [`visual-editor/README.md`](visual-editor/README.md).
+
+---
+
+## 11. Interface sounds (mechanical "clack")
+
+Intentional clicks/taps play a very short, subtle mechanical click (about 40–90 ms). Every sound kind has 3 variations,
+plus ±2.5 % pitch and ±0.6 dB level humanisation, so it never sounds identical twice.
+
+| Interaction | Sound |
+|---|---|
+| Buttons, form submit, CTAs | `button` — short premium click + latch |
+| Navigation bar, mobile menu, footer navigation, hamburger | `nav` — refined, slightly lower clack |
+| Service cards, project cards, social & contact cards, carousel arrows | `card` — subtle damped tactile click |
+| Gallery images, lightbox controls, featured projects | `gallery` — soft two-curtain camera shutter |
+| Theme switch, language selector, checkboxes, cookie switches | `switch` — crisp tick + detent |
+| Any other link / control | `ui` — consistent subtle click |
+
+* **Toggle:** speaker button in the navigation (next to the theme switch). The choice is stored in `localStorage`
+  (`adc-sound`). Turning it on gives one confirmation click; turning it off is silent.
+* **Browser policies:** nothing is created or played before the visitor's first tap/click (autoplay rules on iOS
+  Safari, Android and desktop). On iOS 17+ the "ambient" audio session is used: it respects the silent switch
+  and never pauses the visitor's own music.
+* **When it plays:** only on completed clicks/taps of interactive elements (`click` events), never while
+  scrolling, swiping, dragging, typing or tapping plain text. Disabled controls are silent. Bursts are limited to one
+  sound per 55 ms, and a new click fades out a still-ringing one (no overlap).
+* **Performance:** one 39 KB MP3 sprite (`public/assets/sounds/ui-clicks.mp3`), fetched after page load at low priority
+  (not downloaded at all when the visitor has sound off or Data Saver on), decoded once, played with Web Audio
+  (no `Audio()` objects). The audio engine suspends itself after 15 s idle and when the tab is hidden.
+* **Code:** `src/lib/sound.ts` (engine + click→sound rules), `src/components/SoundToggle.tsx`.
+  To give an element a specific sound add `data-sound="button|nav|card|gallery|switch|ui"`, or `data-sound="none"`
+  to silence it. Levels per kind: `LEVEL` in `src/lib/sound.ts`.
+* **Changing the sounds:** they are synthesised with a physical model of a mechanical switch (no samples, no
+  licences) by `python3 scripts/generate-sounds.py` (needs numpy + ffmpeg); tweak the parameters there and re-run.
+  To use your own recordings instead, build a mono sprite in the same layout (6 kinds in the order
+  button, nav, card, gallery, switch, ui; 3 variations each; one every 0.18 s) and save it as `ui-clicks.mp3`.
+  The exact start of each sound is detected automatically.
+* **Tests:** `npm run preview` then `npm run test:sound` (56 checks: desktop + iPhone/Android emulation).
+

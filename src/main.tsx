@@ -7,6 +7,7 @@ import App from './App';
 import { ThemeProvider } from './lib/theme';
 import { ConsentProvider } from './lib/consent';
 import { ToastProvider } from './components/Toast';
+import { installInteractionSounds } from './lib/sound';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -21,3 +22,5 @@ createRoot(document.getElementById('root')!).render(
     </BrowserRouter>
   </StrictMode>,
 );
+
+installInteractionSounds();

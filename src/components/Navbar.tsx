@@ -4,6 +4,7 @@ import { Link, NavLink, useLocation } from 'react-router';
 import { useT } from '../lib/useT';
 import { Logo } from './Logo';
 import { ThemeToggle } from './ThemeToggle';
+import { SoundToggle } from './SoundToggle';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { useLang } from '../lib/useLang';
 import { business } from '../config/site';
@@ -106,6 +107,7 @@ export function Navbar() {
             <div className="hidden lg:block">
               <LanguageSwitcher />
             </div>
+            <SoundToggle />
             <ThemeToggle />
             <Link {...ve('nav.book', 'button', { key: 'nav.book' })} to={to('/contact')} className="btn btn-primary !hidden !px-5 !py-3 xl:!inline-flex" style={{ minHeight: 44 }}>
               {t('nav.book')}
